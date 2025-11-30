@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Slide The Ball - A fun and challenging puzzle game. Slide tiles to create a path for the ball!">
+    <meta name="keywords" content="puzzle game, slide the ball, brain game, logic puzzle, iOS game, mobile game">
+    <title>Slide The Ball - Puzzle Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 26px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .tagline {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Screenshots Section */
+        .screenshots {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .screenshot-scroller {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(280px, 32%);
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 10px 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+
+        .screenshot-scroller::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .screenshot-scroller::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+
+        .screenshot-card {
+            scroll-snap-align: center;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            padding: 12px 14px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+            padding: 0 6px;
+        }
+
+        .carousel-nav button {
+            pointer-events: all;
+            border: none;
+            background: rgba(255,255,255,0.95);
+            color: #667eea;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .carousel-nav button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+
+        .carousel-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(102,126,234,0.35);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .carousel-dots .dot.active {
+            background: #ffffff;
+            box-shadow: 0 0 0 6px rgba(255,255,255,0.35), 0 6px 16px rgba(0,0,0,0.1);
+            transform: scale(1.1);
+        }
+        
+        /* Download Section */
+        .download {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .download h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .download p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .tagline {
+                font-size: 1.2em;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+
+            .screenshot-scroller {
+                grid-auto-columns: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="app-icon">🎯</div>
+            <h1>Slide The Ball</h1>
+            <p class="tagline">A fun and challenging puzzle game that will test your logic skills!</p>
+            <div class="cta-buttons">
+                <a href="https://apps.apple.com/app/id1265435372" class="btn btn-primary">📱 Download on App Store</a>
+                <a href="support.html" class="btn btn-secondary">📖 Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why You'll Love It</h2>
+            <p class="section-subtitle">Simple to learn, challenging to master</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Hundreds of Levels</h3>
+                    <p>Enjoy countless challenging puzzles across multiple level packs. New levels added regularly!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Easy Controls</h3>
+                    <p>Simple swipe controls make it easy to play. Just slide the tiles to create a path for the ball.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Earn Stars</h3>
+                    <p>Complete levels with fewer moves to earn more stars. Can you get 3 stars on every level?</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Hint System</h3>
+                    <p>Stuck on a level? Use hints to get help. Watch videos to earn more hints!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Universal App</h3>
+                    <p>Optimized for both iPhone and iPad. Looks great on all screen sizes!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>No personal data collection. Your game progress stays on your device only.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">Game Preview</h2>
+            <p class="section-subtitle">See what the game looks like</p>
+            <div class="carousel">
+                <div class="carousel-nav">
+                    <button id="ss-prev" aria-label="Previous">‹</button>
+                    <button id="ss-next" aria-label="Next">›</button>
+                </div>
+                <div class="screenshot-scroller" id="screenshot-scroller">
+                    <figure class="screenshot-card">
+                        <img src="images/Simulator%20Screenshot%20-%20iPhone%2011%20Pro%20Max%20-%202025-10-26%20at%2009.18.50.png" alt="Slide The Ball - Level Selection screen" loading="lazy" decoding="async">
+                        <figcaption class="screenshot-caption">Level Selection</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img src="images/Simulator%20Screenshot%20-%20iPhone%2011%20Pro%20Max%20-%202025-10-26%20at%2009.19.01.png" alt="Slide The Ball - Gameplay puzzle in progress" loading="lazy" decoding="async">
+                        <figcaption class="screenshot-caption">Challenging Gameplay</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img src="images/Simulator%20Screenshot%20-%20iPhone%2011%20Pro%20Max%20-%202025-10-26%20at%2009.19.05.png" alt="Slide The Ball - Completed level with stars" loading="lazy" decoding="async">
+                        <figcaption class="screenshot-caption">Earn Stars</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img src="images/Simulator%20Screenshot%20-%20iPhone%2011%20Pro%20Max%20-%202025-10-26%20at%2009.19.11.png" alt="Slide The Ball - Hint feature UI" loading="lazy" decoding="async">
+                        <figcaption class="screenshot-caption">Smart Hints</figcaption>
+                    </figure>
+                </div>
+                <div class="carousel-dots" id="screenshot-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download">
+        <div class="container">
+            <h2>Ready to Play?</h2>
+            <p>Download Slide The Ball now and start solving puzzles!</p>
+            <a href="#" class="btn btn-primary" style="background: white; color: #667eea;">
+                📱 Download Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+            <a href="mailto:support@slidetheball.com">Contact</a>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Slide The Ball. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        (function() {
+            var scroller = document.getElementById('screenshot-scroller');
+            if (!scroller) return;
+            var prev = document.getElementById('ss-prev');
+            var next = document.getElementById('ss-next');
+            var dotsContainer = document.getElementById('screenshot-dots');
+            var cards = Array.prototype.slice.call(scroller.querySelectorAll('.screenshot-card'));
+
+            // Create dots
+            cards.forEach(function() {
+                var dot = document.createElement('span');
+                dot.className = 'dot';
+                dotsContainer.appendChild(dot);
+            });
+            if (dotsContainer.firstChild) dotsContainer.firstChild.classList.add('active');
+
+            function updateActiveDot() {
+                var scrollerRect = scroller.getBoundingClientRect();
+                var leftEdge = scrollerRect.left;
+                var activeIndex = 0;
+                var minDelta = Infinity;
+                cards.forEach(function(card, idx) {
+                    var delta = Math.abs(card.getBoundingClientRect().left - leftEdge);
+                    if (delta < minDelta) { minDelta = delta; activeIndex = idx; }
+                });
+                Array.prototype.forEach.call(dotsContainer.children, function(dot, i) {
+                    if (i === activeIndex) dot.classList.add('active'); else dot.classList.remove('active');
+                });
+            }
+
+            function scrollByAmount() {
+                return Math.max(280, scroller.clientWidth * 0.9);
+            }
+
+            prev.addEventListener('click', function() {
+                scroller.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+            });
+
+            next.addEventListener('click', function() {
+                scroller.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+            });
+
+            var scrollTimeout;
+            scroller.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveDot, 120);
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>

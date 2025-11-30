@@ -1,89 +1,177 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.10.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.10.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.10.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VidVocab – Learning English</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+</head>
+<body>
+  <header class="header glass sticky">
+    <div class="container header-content">
+      <div class="logo">
+        <img src="https://img.icons8.com/color/48/000000/book.png" alt="VidVocab Logo"/>
+        <span>VidVocab</span>
+      </div>
+      <nav class="main-nav">
+        <a href="#features" class="nav-btn">Features</a>
+        <a href="#audience" class="nav-btn">Who for?</a>
+        <a href="#get-started" class="nav-btn">Get Started</a>
+        <a href="https://apps.apple.com/app/id6748717290" target="_blank" rel="noopener" class="appstore-link" title="Download on the App Store">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"/>
+        </a>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="#features" class="nav-btn">Features</a>
+      <a href="#audience" class="nav-btn">Who for?</a>
+      <a href="#get-started" class="nav-btn">Get Started</a>
+      <a href="https://apps.apple.com/app/id6748717290" target="_blank" rel="noopener" class="appstore-link" title="Download on the App Store">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"/>
+      </a>
+    </nav>
+  </header>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text" data-aos="fade-right">
+        <h1>VidVocab – Learning English</h1>
+        <p>
+          Unlock your English potential with VidVocab – the smart way to learn vocabulary and improve your listening skills through real YouTube videos and interactive captions!
+        </p>
+        <a href="#get-started" class="btn btn-accent cta-glow">Try Free</a>
+      </div>
+      <div class="hero-illustration" data-aos="fade-left">
+        <div id="lottie-hero" style="width:340px; height:340px; border-radius:32px; box-shadow:0 8px 32px 0 rgba(31,38,135,0.12);"></div>
+      </div>
+    </div>
+  </section>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+  <section class="features" id="features">
+    <div class="container">
+      <h2 data-aos="fade-up">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="0">
+          <img src="https://img.icons8.com/color/64/000000/robot-2.png" alt="AI Voice Teacher"/>
+          <h3>AI Voice Teacher</h3>
+          <p>Practice speaking with an intelligent AI teacher! Have natural conversations, get pronunciation feedback, and improve your speaking skills. Try 10 free conversations, then unlock unlimited access with premium.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://img.icons8.com/color/64/000000/microphone.png" alt="Speech Recognition"/>
+          <h3>Real-time Speech Recognition</h3>
+          <p>Practice pronunciation with instant feedback. See your accuracy score and get detailed corrections to improve your speaking skills.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://img.icons8.com/color/64/000000/youtube-play.png" alt="Real Videos"/>
+          <h3>Learn with Real Videos</h3>
+          <p>Explore a wide range of topics and channels from YouTube. Watch authentic videos and immerse yourself in real-life English conversations.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://img.icons8.com/color/64/000000/subtitles.png" alt="Interactive Captions"/>
+          <h3>Interactive Captions</h3>
+          <p>View captions as you watch. Tap any caption to see its meaning, pronunciation, and example usage in context.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
+          <img src="https://img.icons8.com/color/64/000000/like--v3.png" alt="Save Favorite Captions"/>
+          <h3>Save Favorite Captions</h3>
+          <p>Mark any caption as a favorite to build your personalized vocabulary list. Review and practice your saved captions anytime.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="500">
+          <img src="https://img.icons8.com/color/64/000000/book-shelf.png" alt="Smart Search"/>
+          <h3>Smart Search & Dictionary</h3>
+          <p>Instantly search for words or phrases. Get clear definitions, accurate pronunciations, and example sentences to understand how words are used in real contexts.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="600">
+          <img src="https://img.icons8.com/color/64/000000/list.png" alt="Vocabulary Builder"/>
+          <h3>Personal Vocabulary Builder</h3>
+          <p>Save new words and captions to your favorites. Organize and review your vocabulary, track your learning progress, and remove words you’ve mastered.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="700">
+          <img src="https://img.icons8.com/color/64/000000/clock--v2.png" alt="History & Review"/>
+          <h3>History & Review</h3>
+          <p>Easily revisit videos you’ve watched and captions you’ve saved. Repeat and practice as much as you need to reinforce your learning.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="800">
+          <img src="https://img.icons8.com/color/64/000000/topic.png" alt="Topic-Based Learning"/>
+          <h3>Topic-Based Learning</h3>
+          <p>Discover and add topics that interest you. Personalize your learning journey by focusing on subjects you love.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="900">
+          <img src="https://img.icons8.com/color/64/000000/design.png" alt="Modern Design"/>
+          <h3>User-Friendly & Modern Design</h3>
+          <p>Enjoy a clean, intuitive interface designed for effective learning and easy navigation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="audience" id="audience">
+    <div class="container">
+      <h2 data-aos="fade-up">Who is VidVocab for?</h2>
+      <ul>
+        <li data-aos="fade-up" data-aos-delay="0">English learners of all levels</li>
+        <li data-aos="fade-up" data-aos-delay="100">Anyone who wants to expand their vocabulary and improve listening skills</li>
+        <li data-aos="fade-up" data-aos-delay="200">Students preparing for exams</li>
+        <li data-aos="fade-up" data-aos-delay="300">Self-learners and language enthusiasts</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta" id="get-started">
+    <div class="container">
+      <h2 data-aos="zoom-in">Start Learning Now</h2>
+      <p data-aos="zoom-in" data-aos-delay="100">Try 10 free conversations with AI Voice Teacher!</p>
+      <a href="#" class="btn btn-primary btn-lg cta-glow" data-aos="zoom-in" data-aos-delay="200">Get Started</a>
+      <a href="https://apps.apple.com/app/id6748717290" target="_blank" rel="noopener" class="appstore-link" title="Download on the App Store" data-aos="zoom-in" data-aos-delay="300">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:48px; margin-top:18px;"/>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© 2024 VidVocab. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Lottie animation
+    lottie.loadAnimation({
+      container: document.getElementById('lottie-hero'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: './json/vv_learning.json'
+    });
+    // AOS animation
+    AOS.init({ duration: 900, once: true });
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    menuToggle.onclick = () => {
+      mobileNav.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+    };
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.onclick = () => {
+        mobileNav.classList.remove('open');
+        menuToggle.classList.remove('open');
+      };
+    });
+  </script>
+</body>
 </html>

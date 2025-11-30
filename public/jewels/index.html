@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jewels Star Match - Challenging Match-3 Puzzle Game with 298 levels, powerful power-ups, and smooth animations.">
+  <title>Jewels Star Match – Challenging Match-3 Puzzle Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#7c3aed; /* purple */
+      --secondary:#4f46e5; /* indigo */
+      --accent:#22d3ee; /* cyan */
+      --bg:#0b1020;
+      --glass:rgba(255,255,255,0.08);
+      --text:#e6e6f0;
+      --muted:#a5a6c3;
+      --radius:18px;
+      --shadow:0 12px 40px rgba(0,0,0,0.35);
+      --gradient: radial-gradient(1200px 600px at 10% -10%, #312e81 0%, transparent 60%), radial-gradient(1200px 600px at 110% 10%, #1e3a8a 0%, transparent 60%), linear-gradient(180deg, #0b1020 0%, #0d1328 100%);
+    }
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{background:var(--bg); color:var(--text); font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,sans-serif; scroll-behavior:smooth}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 22px}
+
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:30;
+      background:rgba(11,16,32,0.6);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .header-inner{
+      display:flex; align-items:center; justify-content:space-between; height:66px;
+    }
+    .logo{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.4px}
+    .logo img{width:36px; height:36px; filter:drop-shadow(0 4px 12px rgba(124,58,237,.45))}
+    .logo span{color:var(--accent); font-size:1.2rem}
+    .nav{display:flex; gap:16px; align-items:center}
+    .nav a{
+      padding:10px 16px; border-radius:999px; font-weight:600; color:var(--muted);
+      background:transparent; border:1px solid rgba(255,255,255,0.08);
+      transition: all .2s;
+    }
+    .nav a:hover{color:#fff; border-color:rgba(255,255,255,0.18); transform:translateY(-1px)}
+    .btn{
+      display:inline-block; padding:12px 22px; border-radius:14px; font-weight:800; letter-spacing:.3px; transition:transform .2s, box-shadow .2s, background .2s; border:none; cursor:pointer
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; box-shadow:0 8px 24px rgba(79,70,229,.35)}
+    .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 36px rgba(79,70,229,.5)}
+    .btn-ghost{background:rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.12)}
+    .btn-ghost:hover{background:rgba(255,255,255,0.12)}
+    .menu-toggle{display:none; flex-direction:column; gap:5px; cursor:pointer}
+    .menu-toggle span{width:26px; height:3px; background:#9aa0ff; border-radius:2px}
+    @media (max-width:900px){
+      .nav{display:none}
+      .menu-toggle{display:flex}
+    }
+
+    /* Hero */
+    .hero{
+      background:var(--gradient);
+      position:relative;
+      padding:72px 0 48px 0;
+      overflow:hidden;
+    }
+    .orb{
+      position:absolute; width:420px; height:420px; border-radius:50%;
+      background: radial-gradient(closest-side, rgba(34,211,238,.2), transparent);
+      filter: blur(8px);
+      animation: float 10s ease-in-out infinite;
+    }
+    .orb.o1{top:-120px; left:-120px}
+    .orb.o2{bottom:-160px; right:-120px; animation-delay: -3s}
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+    .hero-inner{display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:32px}
+    @media (max-width:900px){.hero-inner{grid-template-columns:1fr; gap:28px}}
+    .hero h1{font-size:2.8rem; line-height:1.1; margin-bottom:14px}
+    .gradient-text{background:linear-gradient(90deg,#60a5fa 0%,#c084fc 50%,#22d3ee 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+    .hero p{color:var(--muted); font-size:1.12rem; margin-bottom:22px}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px; padding:18px; box-shadow:var(--shadow);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .hero-card img{width:100%; border-radius:16px; display:block}
+
+    /* Badges */
+    .store-badges{display:flex; gap:12px; flex-wrap:wrap}
+    .store-badges a img{height:44px; filter:drop-shadow(0 4px 14px rgba(0,0,0,.35)); transition:transform .2s}
+    .store-badges a:hover img{transform: translateY(-2px) scale(1.03)}
+
+    /* Sections */
+    section{padding:56px 0}
+    .section-title{font-size:2rem; font-weight:800; text-align:center; margin-bottom:28px}
+    .muted{color:var(--muted)}
+
+    /* Features grid */
+    .features-grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    @media (max-width:900px){.features-grid{grid-template-columns:1fr}}
+    .feature{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px; padding:20px; min-height:160px;
+      box-shadow:var(--shadow);
+      transition: transform .18s, box-shadow .18s;
+    }
+    .feature:hover{transform:translateY(-6px)}
+    .feature h3{font-size:1.1rem; margin:8px 0 10px 0; color:#d7d7ff}
+    .feature p{color:var(--muted); font-size:0.98rem}
+
+    /* How to play */
+    .how-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    @media (max-width:900px){.how-grid{grid-template-columns:1fr}}
+    .step{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; box-shadow:var(--shadow);
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .step-num{
+      background:linear-gradient(135deg,var(--secondary),var(--primary));
+      width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:800
+    }
+    .step p{margin-top:2px; color:var(--text)}
+
+    /* Gallery carousel */
+    .carousel{
+      position:relative; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.08);
+      background:#0a0f20; box-shadow:var(--shadow);
+    }
+    .slides{display:flex; transition: transform .6s ease;}
+    .slide{min-width:100%; position:relative}
+    .slide img{display:block; width:100%; height:auto}
+    .carousel-controls{
+      position:absolute; top:50%; left:0; right:0; display:flex; justify-content:space-between; transform:translateY(-50%);
+      padding:0 8px; pointer-events:none;
+    }
+    .control{
+      pointer-events:all; backdrop-filter: blur(6px);
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+      width:40px; height:40px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; cursor:pointer; transition:transform .2s, background .2s;
+    }
+    .control:hover{transform:scale(1.05); background:rgba(255,255,255,0.14)}
+    .dots{display:flex; gap:8px; justify-content:center; margin-top:12px}
+    .dot{width:10px; height:10px; border-radius:999px; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.26); cursor:pointer; transition:transform .2s, background .2s}
+    .dot.active{background:linear-gradient(135deg,var(--primary),var(--secondary))}
+
+    /* Footer */
+    .footer{border-top:1px solid rgba(255,255,255,0.06); padding:22px 0; text-align:center; color:var(--muted)}
+
+    /* Decorative floating jewels */
+    .floating-jewel{
+      position:absolute; width:28px; height:28px; opacity:.85;
+      animation: drift 7s ease-in-out infinite;
+      filter: drop-shadow(0 10px 20px rgba(124,58,237,.35));
+    }
+    .floating-jewel.j1{top:12%; left:6%; animation-delay:-1s}
+    .floating-jewel.j2{top:72%; left:8%; animation-delay:-3s}
+    .floating-jewel.j3{top:18%; right:8%; animation-delay:-2s}
+    .floating-jewel.j4{bottom:6%; right:10%; animation-delay:-4s}
+    @keyframes drift { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-10px) rotate(14deg)} }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <img src="./images/ic_level_up_star_005.png" alt="Jewels Star Match logo">
+        <span>Jewels Star Match</span>
+      </div>
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#how">How to Play</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#download">Download</a>
+        <a href="./privacy.html">Privacy</a>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="orb o1"></span>
+    <span class="orb o2"></span>
+    <img class="floating-jewel j1" src="./images/ic_level_up_star_005.png" alt="">
+    <img class="floating-jewel j2" src="./images/ic_level_up_star_005.png" alt="">
+    <img class="floating-jewel j3" src="./images/ic_level_up_star_005.png" alt="">
+    <img class="floating-jewel j4" src="./images/ic_level_up_star_005.png" alt="">
+    <div class="container hero-inner">
+      <div data-aos="fade-right">
+        <h1>
+          <span class="gradient-text">Jewels Star Match</span> – Challenging Match‑3 Puzzle Game!
+        </h1>
+        <p>Welcome to Jewels Star Match, an exciting match‑3 puzzle game with <strong>298 challenging levels</strong> waiting for you to explore! Match colorful jewels to create beautiful combos and overcome every challenge.</p>
+        <div class="hero-cta">
+          <a href="#download" class="btn btn-primary">Play Now</a>
+          <a href="#features" class="btn btn-ghost">Explore Features</a>
+        </div>
+      </div>
+      <div class="hero-card" data-aos="fade-left">
+        <img src="./images/home.png" alt="Jewels Star Match home screen">
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature" data-aos="zoom-in" data-aos-delay="0">
+          <h3>298 Diverse Levels</h3>
+          <p>From easy to hard, every level feels unique and rewarding.</p>
+        </div>
+        <div class="feature" data-aos="zoom-in" data-aos-delay="100">
+          <h3>2 Game Modes</h3>
+          <p><strong>Time Mode</strong>: Beat the clock. <strong>Classic Mode</strong>: Reach target scores to level up.</p>
+        </div>
+        <div class="feature" data-aos="zoom-in" data-aos-delay="200">
+          <h3>Powerful Power‑ups</h3>
+          <p>Match 4 to create thunder jewels; match 5 for magic jewels that wipe colors.</p>
+        </div>
+        <div class="feature" data-aos="zoom-in" data-aos-delay="300">
+          <h3>Time Jewels</h3>
+          <p>Collect time jewels to extend play and finish tough levels in style.</p>
+        </div>
+        <div class="feature" data-aos="zoom-in" data-aos-delay="400">
+          <h3>Beautiful Graphics</h3>
+          <p>Smooth animations and vibrant colors make every match satisfying.</p>
+        </div>
+        <div class="feature" data-aos="zoom-in" data-aos-delay="500">
+          <h3>Engaging Sound</h3>
+          <p>Catchy background music and juicy effects elevate the experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">How to Play</h2>
+      <div class="how-grid">
+        <div class="step" data-aos="fade-up" data-aos-delay="0">
+          <div class="step-num">1</div>
+          <p>Match <strong>3 or more</strong> jewels of the same color in horizontal or vertical lines.</p>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="50">
+          <div class="step-num">2</div>
+          <p>Break obstacles like <strong>colored boxes, ice, and locks</strong> to reveal the star jewel.</p>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-num">3</div>
+          <p>Move the <strong>star jewel</strong> to the bottom to complete the level and unlock the next one.</p>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="150">
+          <div class="step-num">4</div>
+          <p>Break jewels faster to <strong>score higher points</strong> and create massive combos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screenshots">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Screenshots</h2>
+      <div class="carousel" data-aos="zoom-in">
+        <div class="slides" id="slides">
+          <div class="slide"><img src="./images/featuregraphic.png" alt="Feature graphic"></div>
+          <div class="slide"><img src="./images/home.png" alt="Home screen"></div>
+          <div class="slide"><img src="./images/gameplay.png" alt="Gameplay screen"></div>
+          <div class="slide"><img src="./images/levels.png" alt="Levels"></div>
+          <div class="slide"><img src="./images/world.png" alt="World map"></div>
+        </div>
+        <div class="carousel-controls">
+          <div class="control" id="prev" aria-label="Previous">‹</div>
+          <div class="control" id="next" aria-label="Next">›</div>
+        </div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="container" style="text-align:center">
+      <h2 class="section-title" data-aos="fade-up">Download and Play</h2>
+      <p class="muted" data-aos="fade-up" data-aos-delay="80">Start your journey through 298 jewel‑packed challenges.</p>
+      <div class="store-badges" style="justify-content:center; margin-top:14px" data-aos="zoom-in" data-aos-delay="120">
+        <a href="https://apps.apple.com/app/1069757684" target="_blank" rel="noopener" aria-label="Download on the App Store">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.GBV.JewelsStarMatch3" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+        </a>
+      </div>
+      <div style="margin-top:18px">
+        <a class="btn btn-ghost" href="./privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© 2025 Jewels Star Match. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+    // Simple carousel
+    const slides = document.getElementById('slides');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const dotsContainer = document.getElementById('dots');
+    const total = slides.children.length;
+    let index = 0;
+    function renderDots(){
+      dotsContainer.innerHTML = '';
+      for(let i=0;i<total;i++){
+        const d = document.createElement('span');
+        d.className = 'dot' + (i===index ? ' active' : '');
+        d.onclick = () => { index = i; update(); resetAuto(); };
+        dotsContainer.appendChild(d);
+      }
+    }
+    function update(){
+      slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+      Array.from(dotsContainer.children).forEach((dot,i)=> {
+        dot.classList.toggle('active', i===index);
+      });
+    }
+    prev.onclick = () => { index = (index - 1 + total) % total; update(); resetAuto(); };
+    next.onclick = () => { index = (index + 1) % total; update(); resetAuto(); };
+    renderDots(); update();
+    let auto = setInterval(()=>{ index = (index + 1) % total; update(); }, 3500);
+    function resetAuto(){ clearInterval(auto); auto = setInterval(()=>{ index = (index + 1) % total; update(); }, 3500); }
+  </script>
+</body>
+</html>
+
