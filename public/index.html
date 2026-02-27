@@ -2,176 +2,1058 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VidVocab – Learning English</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>VidVocab - Learn English from Real Videos</title>
+  <meta name="description" content="Learn English naturally from real YouTube videos, smart captions, and your personal AI English tutor with VidVocab." />
+  <link rel="icon" type="image/png" href="./images/icon.png" />
+  <link rel="apple-touch-icon" href="./images/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f8fb;
+      --surface: #ffffff;
+      --surface-soft: #eef4ff;
+      --ink: #172432;
+      --ink-soft: #445364;
+      --line: #d5dfec;
+      --brand: #0f7bdb;
+      --brand-dark: #085eaf;
+      --accent: #ff9b3f;
+      --hero-grad-a: #d9f0ff;
+      --hero-grad-b: #fff3dd;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow: 0 24px 60px rgba(12, 64, 118, 0.12);
+      --container: min(1120px, calc(100vw - 32px));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(72rem 48rem at 12% 4%, rgba(15, 123, 219, 0.14) 0%, transparent 65%),
+        radial-gradient(65rem 44rem at 92% 18%, rgba(255, 155, 63, 0.2) 0%, transparent 64%),
+        var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: var(--container);
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: clamp(56px, 7vw, 96px) 0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      border-bottom: 1px solid rgba(213, 223, 236, 0.75);
+      background: rgba(245, 248, 251, 0.86);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-wrap {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(15, 123, 219, 0.25);
+      object-fit: cover;
+      animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-shell {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(213, 223, 236, 0.95);
+      box-shadow: 0 8px 22px rgba(21, 62, 97, 0.08);
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      transition: color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 7px;
+      height: 2px;
+      border-radius: 99px;
+      background: linear-gradient(120deg, var(--brand), #41a7ff);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--brand);
+      background: #f2f8ff;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      padding-inline: 16px;
+      box-shadow: 0 14px 28px rgba(15, 123, 219, 0.34);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.72rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      box-shadow: 0 12px 26px rgba(15, 123, 219, 0.34);
+    }
+
+    .btn-secondary {
+      color: var(--ink);
+      background: #fff;
+      border-color: var(--line);
+    }
+
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: none;
+      background: #fff;
+      padding: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      width: 18px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 99px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-btn.is-open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-btn.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-btn.is-open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      display: none;
+      margin-top: 4px;
+    }
+
+    .mobile-nav.open {
+      display: block;
+      animation: dropDown 0.24s ease-out both;
+    }
+
+    .mobile-nav .mobile-list {
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+      border: 1px solid rgba(213, 223, 236, 0.96);
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 18px;
+      box-shadow: 0 18px 42px rgba(16, 59, 95, 0.15);
+    }
+
+    .mobile-link {
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #355069;
+      background: #f8fbff;
+      border: 1px solid #e4ecf7;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .mobile-link:hover {
+      background: #edf6ff;
+      color: var(--brand);
+      transform: translateX(2px);
+    }
+
+    .mobile-download {
+      margin-top: 4px;
+    }
+
+    .hero {
+      padding: clamp(44px, 8vw, 96px) 0 clamp(56px, 7vw, 92px);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 34px;
+      align-items: center;
+      grid-template-columns: 1.08fr 0.92fr;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(15, 123, 219, 0.1);
+      color: var(--brand-dark);
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      animation: pulseGlow 2.4s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2rem, 5.6vw, 3.7rem);
+      line-height: 1.08;
+      max-width: 14ch;
+      letter-spacing: -0.02em;
+      color: #0d4f88;
+      background: linear-gradient(120deg, #0f7bdb 0%, #35a7ff 28%, #ff9b3f 56%, #f0663f 78%, #0a62b8 100%);
+      background-size: 220% 220%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: headlineGradient 7s ease-in-out infinite;
+      text-shadow: 0 8px 22px rgba(15, 123, 219, 0.14);
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      color: var(--ink-soft);
+      max-width: 58ch;
+      font-size: clamp(1rem, 2.4vw, 1.16rem);
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-note {
+      margin-top: 14px;
+      color: #57708a;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero-card {
+      position: relative;
+      background: linear-gradient(145deg, var(--hero-grad-a), var(--hero-grad-b));
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 4vw, 34px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+      min-height: 355px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -18% auto auto 58%;
+      width: 180px;
+      aspect-ratio: 1;
+      border-radius: 100%;
+      background: rgba(255, 255, 255, 0.38);
+      filter: blur(2px);
+      z-index: -1;
+    }
+
+    .app-preview-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .app-preview-head img {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      box-shadow: 0 10px 22px rgba(8, 94, 175, 0.28);
+      object-fit: cover;
+    }
+
+    .hero-card h3 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: 1.12rem;
+    }
+
+    .hero-subtitle {
+      margin: 2px 0 0;
+      font-size: 0.88rem;
+      color: #2f5678;
+      font-weight: 700;
+    }
+
+    .hero-anim-wrap {
+      position: relative;
+      margin-top: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      padding: 8px;
+      min-height: 220px;
+      overflow: hidden;
+    }
+
+    .lottie-box {
+      width: 100%;
+      height: 210px;
+    }
+
+    .fallback-note {
+      display: none;
+      margin: 0;
+      text-align: center;
+      color: #285174;
+      font-weight: 700;
+      padding: 84px 8px;
+    }
+
+    .motion-chip {
+      position: absolute;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+      animation: chipFloat 2.8s ease-in-out infinite;
+    }
+
+    .motion-chip.chip-1 {
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(135deg, #1278d3, #085eaf);
+      animation-delay: 0.1s;
+    }
+
+    .motion-chip.chip-2 {
+      top: 16px;
+      right: 14px;
+      background: linear-gradient(135deg, #ff9c42, #f07712);
+      animation-delay: 0.35s;
+    }
+
+    .motion-chip.chip-3 {
+      bottom: 12px;
+      right: 16px;
+      background: linear-gradient(135deg, #37b88f, #1b916d);
+      animation-delay: 0.6s;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      letter-spacing: -0.01em;
+      font-size: clamp(1.42rem, 4vw, 2.15rem);
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--ink-soft);
+      max-width: 48ch;
+      font-weight: 500;
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: clamp(18px, 3vw, 24px);
+      box-shadow: 0 10px 30px rgba(11, 48, 87, 0.06);
+      animation: cardRise 0.7s ease both;
+    }
+
+    .feature-grid .card:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .feature-grid .card:nth-child(3) {
+      animation-delay: 0.16s;
+    }
+
+    .feature-grid .card:nth-child(4) {
+      animation-delay: 0.24s;
+    }
+
+    .card .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      font-weight: 800;
+      color: #0c4378;
+      background: linear-gradient(135deg, #d8ecff, #fff6ea);
+      margin-bottom: 12px;
+      transform-origin: center;
+      animation: tagSpin 5.5s linear infinite;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: 1.06rem;
+    }
+
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--ink-soft);
+    }
+
+    .card li + li {
+      margin-top: 6px;
+    }
+
+    .difference {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, #10263a, #1a4466);
+      color: #ecf5ff;
+      padding: clamp(24px, 5vw, 38px);
+      box-shadow: 0 28px 70px rgba(9, 32, 53, 0.26);
+    }
+
+    .difference h2 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.4rem, 4vw, 2.05rem);
+      line-height: 1.18;
+    }
+
+    .difference p {
+      margin: 0;
+      max-width: 70ch;
+      color: rgba(236, 245, 255, 0.92);
+    }
+
+    .difference-list {
+      margin: 20px 0 0;
+      padding-left: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .difference-list li {
+      border: 1px solid rgba(236, 245, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 600;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .audience-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 14px 16px;
+    }
+
+    .audience-item span {
+      width: 26px;
+      height: 26px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #dbecff;
+      color: var(--brand-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .cta {
+      margin-bottom: 18px;
+    }
+
+    .cta-panel {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(160deg, #fff9ed, #ecf5ff);
+      border: 1px solid #deebfa;
+      padding: clamp(24px, 5vw, 40px);
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(32, 71, 109, 0.1);
+    }
+
+    .cta-panel h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.52rem, 4.8vw, 2.32rem);
+      line-height: 1.18;
+    }
+
+    .cta-panel p {
+      margin: 14px auto 0;
+      max-width: 60ch;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    .store-links {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .store-links .btn {
+      min-width: 220px;
+    }
+
+    .store-btn {
+      gap: 10px;
+    }
+
+    .store-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .store-icon path {
+      fill: currentColor;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 38px;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: #567089;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--brand);
+    }
+
+    @keyframes chipFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes iconFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(15, 123, 219, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(15, 123, 219, 0);
+      }
+    }
+
+    @keyframes cardRise {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes tagSpin {
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(6deg);
+      }
+    }
+
+    @keyframes dropDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes headlineGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .section {
+        padding: 52px 0;
+      }
+
+      .feature-grid,
+      .difference-list,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: grid;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .header-wrap {
+        min-height: 66px;
+      }
+
+      .store-links .btn {
+        width: 100%;
+      }
+
+      .lottie-box {
+        height: 190px;
+      }
+    }
+
+    @media (orientation: landscape) and (max-width: 900px) {
+      .hero {
+        padding-top: 36px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @supports (padding: max(0px)) {
+      body {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="header glass sticky">
-    <div class="container header-content">
-      <div class="logo">
-        <img src="https://img.icons8.com/color/48/000000/book.png" alt="VidVocab Logo"/>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a class="brand" href="#top" aria-label="VidVocab home">
+        <img class="brand-icon" src="./images/icon.png" alt="VidVocab app icon" />
         <span>VidVocab</span>
-      </div>
-      <nav class="main-nav">
-        <a href="#features" class="nav-btn">Features</a>
-        <a href="#audience" class="nav-btn">Who for?</a>
-        <a href="#get-started" class="nav-btn">Get Started</a>
-        <a href="https://apps.apple.com/app/id6748717290" target="_blank" rel="noopener" class="appstore-link" title="Download on the App Store">
-          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"/>
-        </a>
-      </nav>
-      <div class="menu-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-    <nav class="mobile-nav" id="mobile-nav">
-      <a href="#features" class="nav-btn">Features</a>
-      <a href="#audience" class="nav-btn">Who for?</a>
-      <a href="#get-started" class="nav-btn">Get Started</a>
-      <a href="https://apps.apple.com/app/id6748717290" target="_blank" rel="noopener" class="appstore-link" title="Download on the App Store">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"/>
       </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav-shell">
+          <a href="#features" class="nav-link">Core Features</a>
+          <a href="#difference" class="nav-link">Why Different</a>
+          <a href="#audience" class="nav-link">Perfect For</a>
+        </div>
+        <a href="#download" class="btn btn-primary nav-cta">Download</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+      <div class="container mobile-list">
+        <a href="#features" class="mobile-link">Core Features</a>
+        <a href="#difference" class="mobile-link">Why Different</a>
+        <a href="#audience" class="mobile-link">Perfect For</a>
+        <a href="#download" class="btn btn-primary mobile-download">Download</a>
+      </div>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text" data-aos="fade-right">
-        <h1>VidVocab – Learning English</h1>
-        <p>
-          Unlock your English potential with VidVocab – the smart way to learn vocabulary and improve your listening skills through real YouTube videos and interactive captions!
-        </p>
-        <a href="#get-started" class="btn btn-accent cta-glow">Try Free</a>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill">Learn English naturally from real videos</div>
+          <h1>Stop memorizing words. Start understanding real English.</h1>
+          <p>
+            VidVocab helps you learn the way native speakers really talk through YouTube videos, smart captions,
+            and an AI English tutor. Learn from real contexts, not isolated textbook vocabulary.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#download">Start Learning Smarter</a>
+            <a class="btn btn-secondary" href="#features">Explore Features</a>
+          </div>
+          <p class="hero-note">Built for responsive web experience and optimized viewing on Android and iOS devices.</p>
+        </div>
+        <aside class="hero-card" aria-label="AI tutor preview">
+          <div class="app-preview-head">
+            <img src="./images/icon.png" alt="VidVocab icon" />
+            <div>
+              <h3>VidVocab AI Tutor</h3>
+              <p class="hero-subtitle">Learn with motion, context, and conversation</p>
+            </div>
+          </div>
+          <div class="hero-anim-wrap">
+            <div class="motion-chip chip-1">REAL VIDEO</div>
+            <div class="motion-chip chip-2">SMART CAPTION</div>
+            <div class="motion-chip chip-3">SPEAK NOW</div>
+            <div id="lottieHero" class="lottie-box" aria-label="Animated English learning preview"></div>
+            <p class="fallback-note" id="lottieFallback">Interactive animation preview</p>
+          </div>
+        </aside>
       </div>
-      <div class="hero-illustration" data-aos="fade-left">
-        <div id="lottie-hero" style="width:340px; height:340px; border-radius:32px; box-shadow:0 8px 32px 0 rgba(31,38,135,0.12);"></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="features" id="features">
-    <div class="container">
-      <h2 data-aos="fade-up">Key Features</h2>
-      <div class="features-grid">
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="0">
-          <img src="https://img.icons8.com/color/64/000000/robot-2.png" alt="AI Voice Teacher"/>
-          <h3>AI Voice Teacher</h3>
-          <p>Practice speaking with an intelligent AI teacher! Have natural conversations, get pronunciation feedback, and improve your speaking skills. Try 10 free conversations, then unlock unlimited access with premium.</p>
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Core Features for English Learning</h2>
+          <p>Each feature is designed as one learning module so users can watch, understand, speak, and improve every day.</p>
         </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
-          <img src="https://img.icons8.com/color/64/000000/microphone.png" alt="Speech Recognition"/>
-          <h3>Real-time Speech Recognition</h3>
-          <p>Practice pronunciation with instant feedback. See your accuracy score and get detailed corrections to improve your speaking skills.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
-          <img src="https://img.icons8.com/color/64/000000/youtube-play.png" alt="Real Videos"/>
-          <h3>Learn with Real Videos</h3>
-          <p>Explore a wide range of topics and channels from YouTube. Watch authentic videos and immerse yourself in real-life English conversations.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
-          <img src="https://img.icons8.com/color/64/000000/subtitles.png" alt="Interactive Captions"/>
-          <h3>Interactive Captions</h3>
-          <p>View captions as you watch. Tap any caption to see its meaning, pronunciation, and example usage in context.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
-          <img src="https://img.icons8.com/color/64/000000/like--v3.png" alt="Save Favorite Captions"/>
-          <h3>Save Favorite Captions</h3>
-          <p>Mark any caption as a favorite to build your personalized vocabulary list. Review and practice your saved captions anytime.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="500">
-          <img src="https://img.icons8.com/color/64/000000/book-shelf.png" alt="Smart Search"/>
-          <h3>Smart Search & Dictionary</h3>
-          <p>Instantly search for words or phrases. Get clear definitions, accurate pronunciations, and example sentences to understand how words are used in real contexts.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="600">
-          <img src="https://img.icons8.com/color/64/000000/list.png" alt="Vocabulary Builder"/>
-          <h3>Personal Vocabulary Builder</h3>
-          <p>Save new words and captions to your favorites. Organize and review your vocabulary, track your learning progress, and remove words you’ve mastered.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="700">
-          <img src="https://img.icons8.com/color/64/000000/clock--v2.png" alt="History & Review"/>
-          <h3>History & Review</h3>
-          <p>Easily revisit videos you’ve watched and captions you’ve saved. Repeat and practice as much as you need to reinforce your learning.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="800">
-          <img src="https://img.icons8.com/color/64/000000/topic.png" alt="Topic-Based Learning"/>
-          <h3>Topic-Based Learning</h3>
-          <p>Discover and add topics that interest you. Personalize your learning journey by focusing on subjects you love.</p>
-        </div>
-        <div class="feature-card" data-aos="zoom-in" data-aos-delay="900">
-          <img src="https://img.icons8.com/color/64/000000/design.png" alt="Modern Design"/>
-          <h3>User-Friendly & Modern Design</h3>
-          <p>Enjoy a clean, intuitive interface designed for effective learning and easy navigation.</p>
+        <div class="feature-grid">
+          <article class="card">
+            <div class="tag">VID</div>
+            <h3>Learn English from Videos</h3>
+            <ul>
+              <li>Learn with movies, interviews, and real conversations from YouTube.</li>
+              <li>Tap any caption to instantly understand meaning.</li>
+              <li>Learn phrases used in real life by native speakers.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="tag">AI</div>
+            <h3>AI English Tutor</h3>
+            <ul>
+              <li>Practice 1-on-1 English conversations anytime.</li>
+              <li>Receive instant feedback and explanations.</li>
+              <li>Improve pronunciation naturally with guided corrections.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="tag">CAP</div>
+            <h3>Smart Caption Learning</h3>
+            <ul>
+              <li>Turn every video into an English lesson.</li>
+              <li>Get instant explanation for words and full sentences.</li>
+              <li>Understand slang, phrasal verbs, and common expressions.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="tag">SPK</div>
+            <h3>Speaking and Pronunciation Practice</h3>
+            <ul>
+              <li>Repeat sentences directly from videos.</li>
+              <li>Train listening and speaking together in one flow.</li>
+              <li>Build confidence step by step with real pronunciation practice.</li>
+            </ul>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="audience" id="audience">
-    <div class="container">
-      <h2 data-aos="fade-up">Who is VidVocab for?</h2>
-      <ul>
-        <li data-aos="fade-up" data-aos-delay="0">English learners of all levels</li>
-        <li data-aos="fade-up" data-aos-delay="100">Anyone who wants to expand their vocabulary and improve listening skills</li>
-        <li data-aos="fade-up" data-aos-delay="200">Students preparing for exams</li>
-        <li data-aos="fade-up" data-aos-delay="300">Self-learners and language enthusiasts</li>
-      </ul>
-    </div>
-  </section>
+    <section class="section" id="difference">
+      <div class="container">
+        <div class="difference">
+          <h2>Why VidVocab is Different</h2>
+          <p>
+            Most apps teach textbook English. VidVocab teaches real English from real content, so you learn how
+            people actually speak, not just grammar rules.
+          </p>
+          <ul class="difference-list">
+            <li>Real conversations from real videos</li>
+            <li>Context-based vocabulary instead of isolated word lists</li>
+            <li>AI tutor practice available daily</li>
+            <li>Listening and speaking progress in one place</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <section class="cta" id="get-started">
-    <div class="container">
-      <h2 data-aos="zoom-in">Start Learning Now</h2>
-      <p data-aos="zoom-in" data-aos-delay="100">Try 10 free conversations with AI Voice Teacher!</p>
-      <a href="#" class="btn btn-primary btn-lg cta-glow" data-aos="zoom-in" data-aos-delay="200">Get Started</a>
-      <a href="https://apps.apple.com/app/id6748717290" target="_blank" rel="noopener" class="appstore-link" title="Download on the App Store" data-aos="zoom-in" data-aos-delay="300">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:48px; margin-top:18px;"/>
-      </a>
-    </div>
-  </section>
+    <section class="section" id="audience">
+      <div class="container">
+        <div class="section-head">
+          <h2>Perfect For</h2>
+          <p>Designed for learners from Beginner to Advanced who want practical, daily English improvement.</p>
+        </div>
+        <div class="audience-grid">
+          <div class="audience-item"><span>OK</span> English learners (Beginner to Advanced)</div>
+          <div class="audience-item"><span>OK</span> Improve listening skills with native speed speech</div>
+          <div class="audience-item"><span>OK</span> Daily speaking practice and confidence building</div>
+          <div class="audience-item"><span>OK</span> Learning English from movies and YouTube content</div>
+          <div class="audience-item"><span>OK</span> AI English tutor practice anytime</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta" id="download">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>Start learning English smarter today</h2>
+          <p>Download VidVocab and experience English learning through real video context, smart captions, and AI tutoring.</p>
+          <div class="store-links">
+            <a
+              id="com.phan.vidvocab"
+              class="btn btn-primary store-btn"
+              href="https://play.google.com/store/apps/details?id=com.phan.vidvocab"
+              target="_blank"
+              rel="noopener"
+              aria-label="Download VidVocab on Google Play"
+            >
+              <svg class="store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 3l11 9L4 21V3zm12.3 10L19 11.1c1.3-.8 1.3-2.4 0-3.2L16.3 6 14 8.1 16.3 13zM14 15.9L16.3 18 19 16.2c1.3-.8 1.3-2.4 0-3.2L16.3 11 14 15.9z"/>
+              </svg>
+              <span>Get on Google Play</span>
+            </a>
+            <a
+              class="btn btn-secondary store-btn"
+              href="https://apps.apple.com/app/id6748717290"
+              target="_blank"
+              rel="noopener"
+              aria-label="Download VidVocab on App Store"
+            >
+              <svg class="store-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M16.2 13.1c0-2 1.7-3 1.8-3.1-1-1.4-2.5-1.6-3.1-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.8.9-3.6 2.2-1.5 2.6-.4 6.5 1.1 8.7.8 1.1 1.6 2.3 2.7 2.3 1.1 0 1.5-.7 2.8-.7 1.4 0 1.8.7 2.9.7 1.2 0 1.9-1.1 2.6-2.2.9-1.3 1.3-2.6 1.3-2.7 0-.1-2-.8-2-3.6zM14 6.9c.6-.8 1-1.9.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-1 2.8 1 .1 2-.5 2.7-1.2z"/>
+              </svg>
+              <span>Download on App Store</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <div class="container">
-      <span>© 2024 VidVocab. All rights reserved.</span>
+    <div class="container footer-wrap">
+      <span>(c) <span id="year"></span> VidVocab. All rights reserved.</span>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms</a>
-        <a href="#">Support</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./term.html">Terms</a>
+        <a href="./support.html">Support</a>
       </div>
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
   <script>
-    // Lottie animation
-    lottie.loadAnimation({
-      container: document.getElementById('lottie-hero'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: './json/vv_learning.json'
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    const mobileLinks = document.querySelectorAll(".mobile-nav a");
+
+    menuBtn.addEventListener("click", () => {
+      const opened = mobileNav.classList.toggle("open");
+      menuBtn.classList.toggle("is-open", opened);
+      menuBtn.setAttribute("aria-expanded", opened ? "true" : "false");
     });
-    // AOS animation
-    AOS.init({ duration: 900, once: true });
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
-    menuToggle.onclick = () => {
-      mobileNav.classList.toggle('open');
-      menuToggle.classList.toggle('open');
-    };
-    document.querySelectorAll('.mobile-nav a').forEach(link => {
-      link.onclick = () => {
-        mobileNav.classList.remove('open');
-        menuToggle.classList.remove('open');
-      };
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+        menuBtn.classList.remove("is-open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
     });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function loadHeroLottie() {
+      const container = document.getElementById("lottieHero");
+      const fallback = document.getElementById("lottieFallback");
+
+      if (!container) {
+        return;
+      }
+
+      if (!window.lottie) {
+        if (fallback) {
+          fallback.style.display = "block";
+        }
+        return;
+      }
+
+      try {
+        window.lottie.loadAnimation({
+          container,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          path: "./json/vv_learning.json"
+        });
+      } catch (error) {
+        if (fallback) {
+          fallback.style.display = "block";
+        }
+      }
+    }
+
+    window.addEventListener("load", loadHeroLottie);
   </script>
 </body>
 </html>
