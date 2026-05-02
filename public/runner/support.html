@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support and help center for Candy Dash Runner: Sugar Rush. Get gameplay help, troubleshooting steps, privacy information, and contact details.">
+    <title>Support - Candy Dash Runner: Sugar Rush</title>
+    <style>
+        :root {
+            --rose: #f43f5e;
+            --rose-dark: #be123c;
+            --orange: #fb923c;
+            --mint: #14b8a6;
+            --cream: #fff7ed;
+            --ink: #25131f;
+            --muted: #6b4d5b;
+            --panel: #ffffff;
+            --line: rgba(190, 18, 60, 0.18);
+            --shadow: 0 18px 50px rgba(190, 18, 60, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(135deg, rgba(244, 63, 94, 0.16), rgba(251, 146, 60, 0.12)),
+                var(--cream);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--rose-dark);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: min(920px, calc(100% - 36px));
+            margin: 0 auto;
+            padding: 42px 0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 34px;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .topbar nav {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 34px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .app-mark {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--rose), var(--orange));
+            box-shadow: 0 10px 26px rgba(244, 63, 94, 0.25);
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            line-height: 1.05;
+            margin-bottom: 12px;
+            letter-spacing: 0;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 760px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: 0 12px 34px rgba(190, 18, 60, 0.08);
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            color: var(--rose-dark);
+            font-size: 1.65rem;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            margin-bottom: 6px;
+        }
+
+        p, li {
+            color: var(--muted);
+        }
+
+        ul {
+            margin-left: 22px;
+            margin-bottom: 4px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .faq {
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border-left: 4px solid var(--rose);
+            background: #fff8f5;
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .contact {
+            display: grid;
+            gap: 10px;
+            padding: 22px;
+            border-radius: 8px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--rose), var(--orange));
+        }
+
+        .contact p, .contact a {
+            color: #fff;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            padding-top: 18px;
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero, .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <a href="./index.html">Candy Dash Runner</a>
+            <nav>
+                <a href="./index.html">Marketing</a>
+                <a href="./privacy.html">Privacy</a>
+            </nav>
+        </div>
+
+        <header class="hero">
+            <div class="app-mark">CD</div>
+            <h1>Support for Candy Dash Runner: Sugar Rush</h1>
+            <p>
+                Find gameplay help, troubleshooting steps, privacy information, and contact details for Candy Dash Runner: Sugar Rush.
+            </p>
+        </header>
+
+        <section class="card">
+            <h2>How to Play</h2>
+            <ul>
+                <li><strong>Swipe up:</strong> Jump over traps, candy blocks, and gaps.</li>
+                <li><strong>Swipe down:</strong> Slide under low obstacles.</li>
+                <li><strong>Swipe left or right:</strong> Change lanes to dodge barriers and collect coins.</li>
+                <li><strong>Collect coins:</strong> Use coins to unlock characters and rewards.</li>
+                <li><strong>Use power-ups:</strong> Grab boosts during a run to push your score higher.</li>
+                <li><strong>Keep running:</strong> The longer you survive, the faster and harder the run becomes.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>How do I improve my high score?</h3>
+                    <p>Focus on lane changes early, save power-ups for crowded obstacle sections, and collect coin paths only when they are safe.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I play offline?</h3>
+                    <p>Yes. The core game can be played offline. Ads and some rewarded ad features may require an internet connection.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does the game have in-app purchases?</h3>
+                    <p>No. Candy Dash Runner: Sugar Rush is supported by ads only and does not include in-app purchases.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What happens if I uninstall the game?</h3>
+                    <p>Game progress, high scores, settings, coins, rewards, and unlocked characters are stored locally. Uninstalling the app may delete this local data.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I turn sound or music on and off?</h3>
+                    <p>Open the in-game settings and use the sound or music controls. Your preference is saved locally on your device.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is my personal data collected?</h3>
+                    <p>We do not collect personal information directly. The game stores gameplay data locally, and ads may be served by third-party advertising providers. Read the <a href="./privacy.html">Privacy Policy</a> for details.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Troubleshooting</h2>
+            <ul>
+                <li>Force close the app and reopen it.</li>
+                <li>Restart your device if the game becomes unresponsive.</li>
+                <li>Make sure your device has enough free storage.</li>
+                <li>Update to the latest version available on the App Store.</li>
+                <li>Check your internet connection if ads or rewarded ads are not loading.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Contact Us</h2>
+            <div class="contact">
+                <p>For bug reports, support questions, or feedback, email us at:</p>
+                <p><a href="mailto:vidvocab@gmail.com">vidvocab@gmail.com</a></p>
+                <p>Please include your device model, iOS version, app version, and a short description of the issue.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Candy Dash Runner: Sugar Rush. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

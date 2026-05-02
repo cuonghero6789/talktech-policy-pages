@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Candy Dash Runner: Sugar Rush - Run fast, dodge sweet obstacles, collect coins, and chase your highest score in a colorful endless runner.">
+    <meta name="keywords" content="Candy Dash Runner, Sugar Rush, endless runner, candy game, mobile game, offline game">
+    <title>Candy Dash Runner: Sugar Rush</title>
+    <link rel="icon" type="image/png" href="./images/icon.png">
+    <style>
+        :root {
+            --rose: #f43f5e;
+            --rose-dark: #be123c;
+            --orange: #fb923c;
+            --mint: #14b8a6;
+            --cream: #fff7ed;
+            --ink: #25131f;
+            --muted: #6b4d5b;
+            --panel: #ffffff;
+            --line: rgba(190, 18, 60, 0.18);
+            --shadow: 0 18px 50px rgba(190, 18, 60, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 247, 237, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 10px 28px rgba(244, 63, 94, 0.28);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            padding: 10px 12px;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(244, 63, 94, 0.08);
+            color: var(--rose-dark);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 72px 0 48px;
+            background:
+                linear-gradient(135deg, rgba(244, 63, 94, 0.16), rgba(251, 146, 60, 0.12)),
+                var(--cream);
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+            align-items: center;
+            gap: 48px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--rose-dark);
+            background: rgba(255, 255, 255, 0.72);
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 6vw, 5.4rem);
+            line-height: 0.95;
+            letter-spacing: 0;
+            color: var(--ink);
+            max-width: 760px;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: clamp(1.05rem, 2vw, 1.28rem);
+            max-width: 640px;
+            margin-bottom: 28px;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 10px;
+            font-weight: 800;
+            border: 1px solid transparent;
+        }
+
+        .button-primary {
+            background: var(--rose);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(244, 63, 94, 0.28);
+        }
+
+        .button-secondary {
+            color: var(--rose-dark);
+            background: rgba(255, 255, 255, 0.7);
+            border-color: var(--line);
+        }
+
+        .phone {
+            position: relative;
+            width: min(100%, 410px);
+            aspect-ratio: 2064 / 2752;
+            margin-left: auto;
+            border-radius: 42px;
+            padding: 18px;
+            background: #2a1320;
+            box-shadow: var(--shadow);
+            border: 8px solid #3a1b2c;
+        }
+
+        .game-screenshot {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 28px;
+            object-fit: cover;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.05;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 12px 34px rgba(190, 18, 60, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--rose-dark);
+        }
+
+        .card p, .card li {
+            color: var(--muted);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .step-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: var(--mint);
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .band {
+            background: #fff;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .footer {
+            padding: 32px 0;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+            background: #fff;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer a {
+            color: var(--rose-dark);
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .phone {
+                max-width: 390px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .grid, .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 14px 0;
+            }
+
+            .nav-links {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 2px;
+            }
+
+            .hero {
+                padding-top: 46px;
+            }
+
+            .phone {
+                border-radius: 34px;
+            }
+
+            .grid, .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="./index.html" aria-label="Candy Dash Runner home">
+                <img class="brand-mark" src="./images/icon.png" alt="Candy Dash Runner app icon">
+                <span>Candy Dash Runner</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-to-play">How to Play</a>
+                <a href="./support.html">Support</a>
+                <a href="./privacy.html">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div>
+                    <div class="eyebrow">Endless runner candy adventure</div>
+                    <h1>Candy Dash Runner: Sugar Rush</h1>
+                    <p>
+                        Run fast, dodge sweet obstacles, collect coins, and survive as long as you can. Every run gets faster, trickier, and more rewarding.
+                    </p>
+                    <div class="actions">
+                        <a class="button button-primary" href="#features">Explore Features</a>
+                        <a class="button button-secondary" href="./support.html">Get Support</a>
+                    </div>
+                </div>
+
+                <div class="phone">
+                    <img class="game-screenshot" src="./images/screenshot.png" alt="Candy Dash Runner gameplay screenshot">
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Simple to start. Hard to master.</h2>
+                    <p>Built for quick sessions, high-score chasing, and smooth offline play.</p>
+                </div>
+                <div class="grid">
+                    <article class="card">
+                        <h3>Fast Endless Runs</h3>
+                        <p>Each run starts easy and keeps getting faster. Stay sharp, react quickly, and push your best score higher.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Smooth Swipe Controls</h3>
+                        <p>Swipe to jump, slide, and dodge moving candy obstacles with controls designed for short, focused play.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Coins and Characters</h3>
+                        <p>Collect coins during each run and unlock new characters to keep every attempt fresh.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Power-Ups</h3>
+                        <p>Grab helpful boosts, extend your run, and break past your previous limits.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Offline Play</h3>
+                        <p>Play anytime, anywhere. No account is required to enjoy the core runner experience.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Ad Supported</h3>
+                        <p>The game is free and supported by ads. There are no in-app purchases in Candy Dash Runner.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to-play" class="band">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>How to play</h2>
+                    <p>Quick controls make every run easy to understand and challenging to perfect.</p>
+                </div>
+                <div class="steps">
+                    <article class="card">
+                        <div class="step-number">1</div>
+                        <h3>Swipe Up</h3>
+                        <p>Jump over low traps and gaps in the candy road.</p>
+                    </article>
+                    <article class="card">
+                        <div class="step-number">2</div>
+                        <h3>Swipe Down</h3>
+                        <p>Slide under obstacles before they stop your run.</p>
+                    </article>
+                    <article class="card">
+                        <div class="step-number">3</div>
+                        <h3>Swipe Left or Right</h3>
+                        <p>Switch lanes to dodge barriers and collect more coins.</p>
+                    </article>
+                    <article class="card">
+                        <div class="step-number">4</div>
+                        <h3>Beat Your Score</h3>
+                        <p>Keep running as the speed increases and chase your personal best.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>&copy; 2026 Candy Dash Runner: Sugar Rush. All rights reserved.</div>
+            <div>
+                <a href="./support.html">Support</a>
+                &nbsp;|&nbsp;
+                <a href="./privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lollipop Saga is a sweet match-3 puzzle adventure with colorful candy worlds, smooth animations, boosters, powerful combos, offline play, and hundreds of challenging levels.">
+    <title>Lollipop Saga - Sweet Match-3 Puzzle Adventure</title>
+    <style>
+        :root {
+            --pink: #ec4899;
+            --pink-dark: #be185d;
+            --orange: #fb923c;
+            --yellow: #facc15;
+            --mint: #14b8a6;
+            --ink: #2b1326;
+            --muted: #735368;
+            --cream: #fff7ed;
+            --panel: #ffffff;
+            --line: rgba(190, 24, 93, 0.16);
+            --shadow: 0 18px 50px rgba(190, 24, 93, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(135deg, rgba(236, 72, 153, 0.14), rgba(251, 146, 60, 0.12)),
+                var(--cream);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 36px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 247, 237, 0.9);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(14px);
+        }
+
+        .topbar-inner {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            letter-spacing: 0;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            box-shadow: 0 10px 24px rgba(236, 72, 153, 0.28);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-weight: 800;
+            padding: 9px 12px;
+            border-radius: 8px;
+        }
+
+        nav a:hover {
+            color: var(--ink);
+            background: rgba(236, 72, 153, 0.08);
+        }
+
+        .hero {
+            min-height: calc(100vh - 68px);
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            align-items: center;
+            gap: 42px;
+            padding: 54px 0 48px;
+        }
+
+        .eyebrow {
+            color: var(--pink-dark);
+            font-size: 0.86rem;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 780px;
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            line-height: 0.95;
+            letter-spacing: 0;
+            margin-bottom: 22px;
+        }
+
+        .hero-copy {
+            max-width: 690px;
+            color: var(--muted);
+            font-size: 1.12rem;
+            margin-bottom: 26px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 900;
+            transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            color: #fff;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            box-shadow: 0 12px 30px rgba(236, 72, 153, 0.3);
+        }
+
+        .button-secondary {
+            color: var(--pink-dark);
+            background: #fff;
+            border: 1px solid rgba(190, 24, 93, 0.2);
+        }
+
+        .game-preview {
+            justify-self: center;
+            width: min(420px, 100%);
+            aspect-ratio: 0.82;
+            border-radius: 30px;
+            background: #fff;
+            border: 1px solid rgba(190, 24, 93, 0.16);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 18px;
+        }
+
+        .score-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: var(--pink-dark);
+            font-weight: 900;
+        }
+
+        .candy-board {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            align-content: center;
+        }
+
+        .candy {
+            aspect-ratio: 1;
+            border-radius: 999px;
+            box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.48), 0 8px 18px rgba(190, 24, 93, 0.12);
+        }
+
+        .candy-a { background: linear-gradient(135deg, #fb7185, #be123c); }
+        .candy-b { background: linear-gradient(135deg, #facc15, #f97316); }
+        .candy-c { background: linear-gradient(135deg, #38bdf8, #2563eb); }
+        .candy-d { background: linear-gradient(135deg, #34d399, #059669); }
+        .candy-e { background: linear-gradient(135deg, #c084fc, #7c3aed); }
+
+        .booster-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .booster {
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            color: #fff;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+        }
+
+        section {
+            padding: 58px 0;
+        }
+
+        .section-heading {
+            max-width: 760px;
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.05;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p,
+        .feature p,
+        .step p,
+        .note p {
+            color: var(--muted);
+            font-size: 1.04rem;
+        }
+
+        .feature-grid,
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .feature,
+        .step,
+        .note {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 22px;
+            box-shadow: 0 14px 36px rgba(190, 24, 93, 0.08);
+        }
+
+        .feature h3,
+        .step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .step-number {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 900;
+            border-radius: 8px;
+            background: var(--pink);
+            margin-bottom: 14px;
+        }
+
+        .purchase-note {
+            background: #fff;
+        }
+
+        .download {
+            color: #fff;
+            background: linear-gradient(135deg, var(--pink-dark), var(--orange));
+        }
+
+        .download .section-heading p {
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .download .button-secondary {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.28);
+        }
+
+        footer {
+            color: var(--muted);
+            text-align: center;
+            border-top: 1px solid var(--line);
+            padding: 24px 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .feature-grid,
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .topbar-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 14px 0;
+            }
+
+            nav a {
+                padding-left: 0;
+            }
+
+            .hero {
+                padding-top: 34px;
+            }
+
+            .feature-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="./index.html" aria-label="Lollipop Saga home">
+                <span class="brand-mark" aria-hidden="true">L</span>
+                <span>Lollipop Saga</span>
+            </a>
+            <nav aria-label="Primary navigation">
+                <a href="#features">Features</a>
+                <a href="#how">How to Play</a>
+                <a href="#download">Download</a>
+                <a href="./support.html">Support</a>
+                <a href="./privacy-policy.html">Privacy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container hero">
+            <div>
+                <p class="eyebrow">Sweet match-3 puzzle adventure</p>
+                <h1>Lollipop Saga</h1>
+                <p class="hero-copy">
+                    Match, crush, and blast your way through a sweet puzzle adventure in Lollipop Saga. Enjoy colorful candy worlds, smooth animations, exciting level challenges, and rewarding match-3 moments.
+                </p>
+                <div class="actions">
+                    <a class="button button-primary" href="#download">Download Now</a>
+                    <a class="button button-secondary" href="#features">Why Players Love It</a>
+                </div>
+            </div>
+
+            <div class="game-preview" aria-label="Lollipop Saga candy board preview">
+                <div class="score-row">
+                    <span>Level 128</span>
+                    <span>Moves 24</span>
+                </div>
+                <div class="candy-board" aria-hidden="true">
+                    <span class="candy candy-a"></span><span class="candy candy-b"></span><span class="candy candy-c"></span><span class="candy candy-d"></span><span class="candy candy-e"></span><span class="candy candy-a"></span><span class="candy candy-b"></span>
+                    <span class="candy candy-d"></span><span class="candy candy-a"></span><span class="candy candy-a"></span><span class="candy candy-c"></span><span class="candy candy-b"></span><span class="candy candy-e"></span><span class="candy candy-d"></span>
+                    <span class="candy candy-c"></span><span class="candy candy-b"></span><span class="candy candy-d"></span><span class="candy candy-d"></span><span class="candy candy-a"></span><span class="candy candy-b"></span><span class="candy candy-e"></span>
+                    <span class="candy candy-e"></span><span class="candy candy-c"></span><span class="candy candy-b"></span><span class="candy candy-a"></span><span class="candy candy-a"></span><span class="candy candy-d"></span><span class="candy candy-c"></span>
+                    <span class="candy candy-b"></span><span class="candy candy-d"></span><span class="candy candy-e"></span><span class="candy candy-c"></span><span class="candy candy-b"></span><span class="candy candy-b"></span><span class="candy candy-a"></span>
+                    <span class="candy candy-a"></span><span class="candy candy-e"></span><span class="candy candy-c"></span><span class="candy candy-b"></span><span class="candy candy-d"></span><span class="candy candy-c"></span><span class="candy candy-d"></span>
+                    <span class="candy candy-d"></span><span class="candy candy-b"></span><span class="candy candy-a"></span><span class="candy candy-e"></span><span class="candy candy-c"></span><span class="candy candy-d"></span><span class="candy candy-e"></span>
+                </div>
+                <div class="booster-row" aria-hidden="true">
+                    <span class="booster">Blast</span>
+                    <span class="booster">Swap</span>
+                    <span class="booster">Moves</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Why players love Lollipop Saga</h2>
+                    <p>Easy to learn, hard to put down, and full of sweet puzzle goals for relaxing breaks or bigger challenges.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature"><h3>Hundreds of levels</h3><p>Play through sweet and challenging match-3 levels across colorful candy worlds.</p></article>
+                    <article class="feature"><h3>Bright candy graphics</h3><p>Enjoy delightful visual effects, cheerful colors, and smooth candy animations.</p></article>
+                    <article class="feature"><h3>Boosters and combos</h3><p>Create powerful matches, trigger satisfying blasts, and use fun boosters to beat tricky stages.</p></article>
+                    <article class="feature"><h3>Relaxing or challenging</h3><p>Take a short break or master harder puzzles with rewarding level goals.</p></article>
+                    <article class="feature"><h3>Offline play</h3><p>Play anytime, anywhere, even without an internet connection for the core game.</p></article>
+                    <article class="feature"><h3>Free to download</h3><p>Lollipop Saga is free to download and enjoy, with optional in-game items available.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>How to play</h2>
+                    <p>Match candy pieces, complete goals, and make every move count as levels become more challenging.</p>
+                </div>
+                <div class="steps">
+                    <article class="step"><div class="step-number">1</div><h3>Match candies</h3><p>Swap candies to match three or more of the same type in a row or column.</p></article>
+                    <article class="step"><div class="step-number">2</div><h3>Create combos</h3><p>Match more candies to create boosters and trigger powerful chain reactions.</p></article>
+                    <article class="step"><div class="step-number">3</div><h3>Beat level goals</h3><p>Clear objectives before running out of moves and unlock more sweet challenges.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="purchase-note">
+            <div class="container">
+                <div class="note">
+                    <h2>Free to play</h2>
+                    <p>
+                        Lollipop Saga is free to play. Some in-game items, such as extra moves or lives, are available through in-app purchases. You can disable in-app purchases in your device settings.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Start your sweet puzzle journey today.</h2>
+                    <p>We are always working to add more fun levels and improve the game experience.</p>
+                </div>
+                <div class="actions">
+                    <a class="button button-primary" href="./support.html">Get Support</a>
+                    <a class="button button-secondary" href="./privacy-policy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">&copy; 2026 Lollipop Saga. All rights reserved.</div>
+    </footer>
+</body>
+</html>

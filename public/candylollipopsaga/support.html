@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support and help center for Lollipop Saga. Get match-3 gameplay help, troubleshooting steps, purchase information, privacy information, and contact details.">
+    <title>Support - Lollipop Saga</title>
+    <style>
+        :root {
+            --pink: #ec4899;
+            --pink-dark: #be185d;
+            --orange: #fb923c;
+            --cream: #fff7ed;
+            --ink: #2b1326;
+            --muted: #735368;
+            --panel: #ffffff;
+            --line: rgba(190, 24, 93, 0.18);
+            --shadow: 0 18px 50px rgba(190, 24, 93, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(135deg, rgba(236, 72, 153, 0.14), rgba(251, 146, 60, 0.12)),
+                var(--cream);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--pink-dark);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: min(920px, calc(100% - 36px));
+            margin: 0 auto;
+            padding: 42px 0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 34px;
+            color: var(--muted);
+            font-weight: 800;
+        }
+
+        .topbar nav {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero,
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding: 34px;
+            margin-bottom: 20px;
+        }
+
+        .app-mark {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 1.7rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+            margin-bottom: 12px;
+        }
+
+        .hero p,
+        p,
+        li {
+            color: var(--muted);
+        }
+
+        .hero p {
+            max-width: 760px;
+            font-size: 1.08rem;
+        }
+
+        .card {
+            padding: 28px;
+            margin-bottom: 18px;
+            box-shadow: 0 12px 34px rgba(190, 24, 93, 0.08);
+        }
+
+        h2 {
+            color: var(--pink-dark);
+            font-size: 1.65rem;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            margin-bottom: 6px;
+        }
+
+        ul {
+            margin-left: 22px;
+            margin-bottom: 4px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .faq {
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border-left: 4px solid var(--pink);
+            background: #fff1f2;
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .contact {
+            display: grid;
+            gap: 10px;
+            padding: 22px;
+            border-radius: 8px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+        }
+
+        .contact p,
+        .contact a {
+            color: #fff;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            padding-top: 18px;
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero,
+            .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <a href="./index.html">Lollipop Saga</a>
+            <nav>
+                <a href="./index.html">Marketing</a>
+                <a href="./privacy-policy.html">Privacy</a>
+            </nav>
+        </div>
+
+        <header class="hero">
+            <div class="app-mark" aria-hidden="true">L</div>
+            <h1>Support for Lollipop Saga</h1>
+            <p>Find gameplay help, troubleshooting steps, purchase information, privacy details, and contact information for Lollipop Saga.</p>
+        </header>
+
+        <section class="card">
+            <h2>How to Play</h2>
+            <ul>
+                <li><strong>Match candies:</strong> Swap candies to match three or more of the same type.</li>
+                <li><strong>Create boosters:</strong> Match four or more candies to create stronger effects and combos.</li>
+                <li><strong>Beat level goals:</strong> Complete the objective before running out of moves.</li>
+                <li><strong>Use boosters wisely:</strong> Save boosters for difficult boards and tight move counts.</li>
+                <li><strong>Keep progressing:</strong> Clear levels to unlock more sweet match-3 challenges.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>Can I play offline?</h3>
+                    <p>Yes. The core game can be played offline. Ads, purchases, rewarded features, or store-related features may require an internet connection.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is Lollipop Saga free?</h3>
+                    <p>Yes. Lollipop Saga is free to download and enjoy.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does the game include in-app purchases?</h3>
+                    <p>Yes. Some optional in-game items, such as extra moves or lives, may be available through in-app purchases. You can disable in-app purchases in your device settings.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What happens if I uninstall the game?</h3>
+                    <p>Locally stored progress, settings, boosters, lives, and rewards may be deleted when the app is uninstalled.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is my personal data collected?</h3>
+                    <p>We do not collect personal information directly. The game stores gameplay data locally, and ads or purchases may be handled by third-party platform services. Read the <a href="./privacy-policy.html">Privacy Policy</a> for details.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Troubleshooting</h2>
+            <ul>
+                <li>Force close the app and reopen it.</li>
+                <li>Restart your device if the game becomes unresponsive.</li>
+                <li>Make sure your device has enough free storage.</li>
+                <li>Update to the latest version available on the App Store or Google Play.</li>
+                <li>Check your internet connection if ads, purchases, or rewarded features are not loading.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Purchases and Billing</h2>
+            <ul>
+                <li>In-app purchases are processed by the Apple App Store or Google Play Store.</li>
+                <li>We do not receive or store your full payment card details.</li>
+                <li>For refunds or billing problems, please use the purchase support flow from your app store account.</li>
+                <li>You can disable in-app purchases in your device settings or parental control settings.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Contact Us</h2>
+            <div class="contact">
+                <p>For bug reports, support questions, or feedback, email us at:</p>
+                <p><a href="mailto:vidvocab@gmail.com">vidvocab@gmail.com</a></p>
+                <p>Please include your device model, operating system version, app version, level number, and a short description of the issue.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Lollipop Saga. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support and help center for Block Jewel Classic: Puzzle. Get gameplay help, troubleshooting steps, privacy information, and contact details.">
+    <title>Support - Block Jewel Classic: Puzzle</title>
+    <style>
+        :root {
+            --blue: #1167b1;
+            --teal: #00a8a8;
+            --gold: #f6b73c;
+            --ink: #15212d;
+            --muted: #5c6d7d;
+            --paper: #f7fbff;
+            --panel: #ffffff;
+            --line: rgba(17, 103, 177, 0.18);
+            --shadow: 0 18px 50px rgba(17, 103, 177, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(135deg, rgba(0, 168, 168, 0.12), rgba(246, 183, 60, 0.1)),
+                var(--paper);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--blue);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: min(920px, calc(100% - 36px));
+            margin: 0 auto;
+            padding: 42px 0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 34px;
+            color: var(--muted);
+            font-weight: 800;
+        }
+
+        .topbar nav {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero,
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            padding: 34px;
+            margin-bottom: 20px;
+        }
+
+        .app-mark {
+            width: 58px;
+            height: 58px;
+            border-radius: 14px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            padding: 8px;
+            background: #0d3347;
+            margin-bottom: 18px;
+        }
+
+        .app-mark span {
+            border-radius: 5px;
+        }
+
+        .app-mark span:nth-child(1) { background: var(--teal); }
+        .app-mark span:nth-child(2) { background: var(--gold); }
+        .app-mark span:nth-child(3) { background: #e84a7f; }
+        .app-mark span:nth-child(4) { background: var(--blue); }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.3rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+            margin-bottom: 12px;
+        }
+
+        .hero p,
+        p,
+        li {
+            color: var(--muted);
+        }
+
+        .hero p {
+            max-width: 760px;
+            font-size: 1.08rem;
+        }
+
+        .card {
+            padding: 28px;
+            margin-bottom: 18px;
+            box-shadow: 0 12px 34px rgba(17, 103, 177, 0.08);
+        }
+
+        h2 {
+            color: var(--blue);
+            font-size: 1.65rem;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 1.08rem;
+            margin-bottom: 6px;
+        }
+
+        ul {
+            margin-left: 22px;
+            margin-bottom: 4px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .faq {
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            border-left: 4px solid var(--teal);
+            background: #f0fbfb;
+            border-radius: 8px;
+            padding: 18px;
+        }
+
+        .contact {
+            display: grid;
+            gap: 10px;
+            padding: 22px;
+            border-radius: 8px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+        }
+
+        .contact p,
+        .contact a {
+            color: #fff;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            padding-top: 18px;
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero,
+            .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <a href="./index.html">Block Jewel Classic</a>
+            <nav>
+                <a href="./index.html">Marketing</a>
+                <a href="./privacy.html">Privacy</a>
+            </nav>
+        </div>
+
+        <header class="hero">
+            <div class="app-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <h1>Support for Block Jewel Classic: Puzzle</h1>
+            <p>Find gameplay help, troubleshooting steps, privacy information, and contact details for Block Jewel Classic: Puzzle.</p>
+        </header>
+
+        <section class="card">
+            <h2>How to Play</h2>
+            <ul>
+                <li><strong>Drag blocks:</strong> Move jewel blocks from the tray onto open grid spaces.</li>
+                <li><strong>Fill rows or columns:</strong> Complete a full row or column to clear it from the board.</li>
+                <li><strong>Clear multiple lines:</strong> Combo clears can earn higher scores and open more space.</li>
+                <li><strong>Plan ahead:</strong> Every move matters as the board fills up.</li>
+                <li><strong>Keep playing:</strong> The game ends when there is no space left for new blocks.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>Can I play offline?</h3>
+                    <p>Yes. The core puzzle game can be played offline. Ads or rewarded ad features may require an internet connection.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does the game have a time limit?</h3>
+                    <p>The classic experience has no time pressure, so you can take your time and plan every move.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How is my progress saved?</h3>
+                    <p>Game progress, current board, settings, and best score may be saved locally on your device.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What happens if I uninstall the game?</h3>
+                    <p>Locally stored progress and settings may be deleted when the app is uninstalled.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is my personal data collected?</h3>
+                    <p>We do not collect personal information directly. The game stores gameplay data locally, and ads may be served by third-party advertising providers. Read the <a href="./privacy.html">Privacy Policy</a> for details.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Troubleshooting</h2>
+            <ul>
+                <li>Force close the app and reopen it.</li>
+                <li>Restart your device if the game becomes unresponsive.</li>
+                <li>Make sure your device has enough free storage.</li>
+                <li>Update to the latest version available on the App Store or Google Play.</li>
+                <li>Check your internet connection if ads or rewarded ads are not loading.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Contact Us</h2>
+            <div class="contact">
+                <p>For bug reports, support questions, or feedback, email us at:</p>
+                <p><a href="mailto:vidvocab@gmail.com">vidvocab@gmail.com</a></p>
+                <p>Please include your device model, operating system version, app version, and a short description of the issue.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Block Jewel Classic: Puzzle. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
