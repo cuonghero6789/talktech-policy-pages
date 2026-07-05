@@ -3,302 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Privacy Policy for Candy Lollipop Saga - Match, crush, and blast your way through a sweet puzzle adventure in Lollipop Saga.">
+    <meta name="description" content="Privacy Policy for Candy Lollipop Saga, including details about local game data, in-app purchases, advertising partners, and contact information.">
     <title>Privacy Policy - Candy Lollipop Saga</title>
     <style>
+        :root {
+            --accent: #ff385c;
+            --accent-soft: #fff1f3;
+            --ink: #222222;
+            --ink-soft: #3a3a3a;
+            --text-secondary: #717171;
+            --border: #dddddd;
+            --divider: #ebebeb;
+            --surface: #ffffff;
+            --shadow-soft: 0 20px 50px rgba(34, 34, 34, 0.08);
+            --shadow-card: 0 12px 28px rgba(34, 34, 34, 0.06);
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f7;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #ec4899;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            color: #ec4899;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .app-name {
-            font-size: 1.2em;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .last-updated {
-            font-size: 0.9em;
-            color: #999;
-            margin-top: 10px;
-        }
-
-        h2 {
-            color: #db2777;
-            font-size: 1.8em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        h3 {
-            color: #333;
-            font-size: 1.2em;
-            margin-top: 18px;
-            margin-bottom: 8px;
-        }
-
-        p {
-            margin-bottom: 14px;
-            text-align: justify;
-        }
-
-        ul, ol {
-            margin-left: 26px;
-            margin-bottom: 14px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .highlight {
-            background: #fff1f2;
-            padding: 15px;
-            border-left: 4px solid #ec4899;
-            margin: 16px 0;
-        }
-
-        .contact-info {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 24px;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(255, 56, 92, 0.12), transparent 28%),
+                linear-gradient(180deg, #fffdfb 0%, #fff7ef 45%, #ffffff 100%);
+            line-height: 1.65;
         }
 
         a {
-            color: #db2777;
+            color: var(--accent);
             text-decoration: none;
         }
 
-        a:hover {
+        a:hover,
+        a:focus-visible {
             text-decoration: underline;
+            outline: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(980px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(255, 253, 251, 0.82);
+            backdrop-filter: blur(16px);
+        }
+
+        .topbar-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .brand img {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            box-shadow: 0 10px 24px rgba(255, 56, 92, 0.16);
+        }
+
+        .brand small {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: 10px 14px;
+            color: var(--text-secondary);
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--ink);
+            background: rgba(255, 56, 92, 0.08);
+            text-decoration: none;
+        }
+
+        main {
+            padding: 38px 0 48px;
+        }
+
+        .hero,
+        .section-card,
+        .highlight,
+        .contact-card {
+            border: 1px solid var(--divider);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: var(--shadow-card);
+        }
+
+        .hero {
+            padding: 28px;
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            color: var(--accent);
+            background: var(--accent-soft);
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            line-height: 0.98;
+        }
+
+        .hero p,
+        .section-card p,
+        .section-card li,
+        .highlight p,
+        .highlight li,
+        .contact-card p {
+            color: var(--text-secondary);
+        }
+
+        .meta {
+            margin-top: 14px;
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .content {
+            display: grid;
+            gap: 18px;
+        }
+
+        .section-card {
+            padding: 24px;
+        }
+
+        h2 {
+            margin-bottom: 14px;
+            font-size: 1.55rem;
+            line-height: 1.1;
+        }
+
+        h3 {
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            line-height: 1.25;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        ol {
+            margin-left: 20px;
+        }
+
+        li + li {
+            margin-top: 8px;
+        }
+
+        .highlight {
+            padding: 20px;
+            margin: 16px 0;
+            background: linear-gradient(135deg, #fff8fa, #fffaf0);
+            border-color: rgba(255, 56, 92, 0.14);
+        }
+
+        .contact-card {
+            padding: 24px;
+            background: linear-gradient(135deg, #ff496b, #ff8a52);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 22px 40px rgba(255, 56, 92, 0.18);
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .contact-card a {
+            font-weight: 700;
         }
 
         footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 18px;
-            border-top: 1px solid #e0e0e0;
-            color: #999;
-            font-size: 0.95em;
+            padding: 28px 0 40px;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 24px 16px;
-            }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-top: 18px;
+            border-top: 1px solid var(--divider);
+            color: var(--text-secondary);
+        }
 
-            h1 {
-                font-size: 2em;
-            }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
 
-            h2 {
-                font-size: 1.5em;
+        @media (max-width: 720px) {
+            .topbar-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="./index.html" aria-label="Candy Lollipop Saga home">
+                <img src="./images/icon.png" alt="Candy Lollipop Saga app icon">
+                <span>
+                    Candy Lollipop Saga
+                    <small>Privacy policy</small>
+                </span>
+            </a>
+            <nav aria-label="Privacy navigation">
+                <a href="./index.html">Home</a>
+                <a href="./support.html">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="hero">
+            <p class="eyebrow">Privacy information for players</p>
             <h1>Privacy Policy</h1>
-            <div class="app-name">Candy Lollipop Saga</div>
-            <div class="last-updated">Last Updated: April 22, 2026</div>
+            <p>This Privacy Policy explains how information is handled when you use Candy Lollipop Saga, including local game data, optional purchases, advertising technologies, and your available choices.</p>
+            <p class="meta">Last Updated: July 6, 2026</p>
         </header>
 
-        <section>
-            <h2>1. Introduction</h2>
-            <p>
-                Welcome to Candy Lollipop Saga ("we," "our," or "us"). We are committed to protecting your privacy and providing a fun, safe, and enjoyable match-3 puzzle experience. This Privacy Policy explains how information is collected, used, and protected when you use our mobile application.
-            </p>
-            <p>
-                Candy Lollipop Saga is a sweet puzzle adventure where players can match, crush, and blast their way through colorful candy worlds with smooth animations and exciting level challenges. Whether you want a relaxing break or a puzzle challenge to master, the game is designed to be easy to learn and rewarding to play.
-            </p>
-            <div class="highlight">
-                <p><strong>Why players love Candy Lollipop Saga:</strong></p>
+        <div class="content">
+            <section class="section-card">
+                <h2>1. Introduction</h2>
+                <p>Welcome to Candy Lollipop Saga ("we," "our," or "us"). We are committed to protecting your privacy while providing a fun and safe match-3 puzzle experience.</p>
+                <p>Candy Lollipop Saga is a colorful mobile puzzle game where players match candies, trigger combos, clear level goals, and progress through sweet puzzle challenges.</p>
+                <div class="highlight">
+                    <p><strong>Key gameplay highlights:</strong></p>
+                    <ul>
+                        <li>Hundreds of candy puzzle levels</li>
+                        <li>Bright visual effects and smooth board feedback</li>
+                        <li>Boosters, combos, and level-based challenges</li>
+                        <li>Offline-friendly core gameplay</li>
+                        <li>Free download with optional in-app items</li>
+                    </ul>
+                </div>
+                <p>By downloading or using Candy Lollipop Saga, you agree to this Privacy Policy.</p>
+            </section>
+
+            <section class="section-card">
+                <h2>2. Information We Collect</h2>
+
+                <h3>2.1 Information We Do Not Collect Directly</h3>
+                <div class="highlight">
+                    <p><strong>We do not directly collect personal information such as:</strong></p>
+                    <ul>
+                        <li>Name or email address during normal gameplay</li>
+                        <li>Phone number or address book data</li>
+                        <li>Precise GPS location</li>
+                        <li>Photos, camera recordings, or microphone recordings</li>
+                        <li>Social media profile information</li>
+                    </ul>
+                </div>
+
+                <h3>2.2 Local Data Storage</h3>
+                <p>The game may store certain information locally on your device to support gameplay, including:</p>
                 <ul>
-                    <li>Hundreds of sweet and challenging match-3 levels</li>
-                    <li>Bright, colorful graphics and delightful visual effects</li>
-                    <li>Smooth gameplay with fun boosters and powerful combos</li>
-                    <li>Easy to play, hard to put down</li>
-                    <li>Play offline anytime, anywhere</li>
-                    <li>Free to download and enjoy</li>
+                    <li>Completed levels, scores, stars, and achievements</li>
+                    <li>Game settings such as sound or music preferences</li>
+                    <li>Boosters, lives, coins, extra moves, and other earned rewards</li>
                 </ul>
-            </div>
-            <p>
-                By downloading and using Candy Lollipop Saga, you agree to this Privacy Policy.
-            </p>
-        </section>
+                <p>This information is kept on your device and is not stored in our own player account system.</p>
 
-        <section>
-            <h2>2. Information We Collect</h2>
+                <h3>2.3 In-App Purchases</h3>
+                <p>Candy Lollipop Saga is free to play. Optional in-game items may be offered through in-app purchases handled by Apple App Store or Google Play Store billing systems.</p>
+                <p>We do not receive or store your full payment card information. Payment processing is managed by the platform provider under its own terms and privacy practices.</p>
 
-            <h3>2.1 Information We Do NOT Collect</h3>
-            <div class="highlight">
-                <p><strong>Candy Lollipop Saga does NOT collect, store, or transmit personal information such as:</strong></p>
+                <h3>2.4 Third-Party Advertising</h3>
+                <p>We may use third-party advertising services such as Google AdMob. These services may process limited device or usage information for ad delivery, frequency control, and measurement.</p>
                 <ul>
-                    <li>Name or email address</li>
-                    <li>Phone number or contact information</li>
-                    <li>Precise location or GPS data</li>
-                    <li>Photos, camera, or microphone data</li>
-                    <li>Contacts or social media information</li>
+                    <li>Device model and operating system version</li>
+                    <li>Advertising identifiers such as IDFA or AAID</li>
+                    <li>Approximate location derived from IP address</li>
+                    <li>Usage data related to ad interactions</li>
                 </ul>
-            </div>
+                <p>We do not directly control the data practices of those third-party providers.</p>
+            </section>
 
-            <h3>2.2 Local Data Storage</h3>
-            <p>The game may store the following information locally on your device only:</p>
-            <ul>
-                <li><strong>Game Progress:</strong> Completed levels, scores, stars, and achievements</li>
-                <li><strong>Game Settings:</strong> Sound, music, and gameplay preferences</li>
-                <li><strong>Boosters and Rewards:</strong> Counts of boosters, coins, extra moves, lives, and other earned rewards</li>
-            </ul>
-            <p>
-                This information is stored locally to support your gameplay experience and is not transmitted to our servers.
-            </p>
+            <section class="section-card">
+                <h2>3. How Information Is Used</h2>
+                <p>The limited information described above may be used to:</p>
+                <ul>
+                    <li>Save or restore game progress and settings on your device</li>
+                    <li>Provide gameplay features, rewards, boosters, and level progression</li>
+                    <li>Support optional purchases through your platform store</li>
+                    <li>Improve app stability, compatibility, and user experience</li>
+                </ul>
+            </section>
 
-            <h3>2.3 In-App Purchases</h3>
-            <p>
-                Candy Lollipop Saga is free to play. Some in-game items, such as extra moves or lives, may be available through in-app purchases handled by the Apple App Store or Google Play Store.
-            </p>
-            <p>
-                We do not receive or store your full payment card details. Payment transactions are processed by the platform provider according to their own privacy policies and terms.
-            </p>
+            <section class="section-card">
+                <h2>4. Third-Party Services</h2>
 
-            <h3>2.4 Third-Party Advertising</h3>
-            <p>
-                We may use third-party advertising services such as Google AdMob to display ads. These services may collect certain device and usage information for ad delivery and measurement, including:
-            </p>
-            <ul>
-                <li>Device information (such as model and operating system version)</li>
-                <li>Advertising ID (IDFA on iOS, AAID on Android)</li>
-                <li>Approximate location derived from IP address</li>
-                <li>Usage data related to ad interactions</li>
-            </ul>
-            <p>
-                We do not directly access or control data collected by these third-party services.
-            </p>
-        </section>
+                <h3>4.1 Advertising Services</h3>
+                <p>If ads are displayed in the game, third-party advertising providers may process data according to their own privacy policies.</p>
+                <ul>
+                    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+                    <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites and apps</a></li>
+                </ul>
 
-        <section>
-            <h2>3. How We Use Information</h2>
-            <p>The limited information described above is used only to:</p>
-            <ul>
-                <li>Save and restore your game progress and settings</li>
-                <li>Provide gameplay features, boosters, and rewards</li>
-                <li>Support purchases of optional in-game items</li>
-                <li>Improve game stability and user experience</li>
-            </ul>
-            <p>
-                We are always working to add more fun levels and improve the game experience.
-            </p>
-        </section>
+                <h3>4.2 In-App Purchase Providers</h3>
+                <p>Optional in-app purchases are handled by your platform provider.</p>
+                <ul>
+                    <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+                    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+                </ul>
+            </section>
 
-        <section>
-            <h2>4. Third-Party Services</h2>
+            <section class="section-card">
+                <h2>5. Children's Privacy</h2>
+                <p>Candy Lollipop Saga is intended for a general audience. We do not knowingly collect personal information directly from children under 13, or under the applicable minimum age in a relevant jurisdiction.</p>
+                <p>Parents and guardians can use device-level controls to manage ad personalization preferences or disable in-app purchases.</p>
+            </section>
 
-            <h3>4.1 Advertising Services</h3>
-            <p>If ads are displayed in the game, third-party advertising providers may process data under their own privacy policies.</p>
-            <ul>
-                <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
-                <li><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites and apps</a></li>
-            </ul>
+            <section class="section-card">
+                <h2>6. Data Security</h2>
+                <p>We take reasonable steps to reduce privacy risk within the structure of the game and its platform services.</p>
+                <ul>
+                    <li>Gameplay data is primarily stored locally on your device</li>
+                    <li>Payment processing is handled by established platform providers</li>
+                    <li>We do not operate a direct user account database for this game</li>
+                </ul>
+                <p>No method of storage or transmission can be guaranteed completely secure, but we aim to keep data handling limited and practical.</p>
+            </section>
 
-            <h3>4.2 In-App Purchase Providers</h3>
-            <p>Optional in-app purchases are handled by your platform provider:</p>
-            <ul>
-                <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
-                <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
-            </ul>
-            <p>
-                You can disable in-app purchases in your device settings if you do not want to allow these purchases.
-            </p>
-        </section>
+            <section class="section-card">
+                <h2>7. Your Choices</h2>
+                <ul>
+                    <li>You can stop using the app at any time</li>
+                    <li>You can disable in-app purchases in device settings</li>
+                    <li>You can adjust ad personalization controls through your device or platform privacy settings</li>
+                    <li>You can remove locally stored gameplay data by uninstalling the app from your device</li>
+                </ul>
+            </section>
 
-        <section>
-            <h2>5. Children's Privacy</h2>
-            <p>
-                Candy Lollipop Saga is intended for a general audience. We do not knowingly collect personal information from children under 13, or under the applicable age in your jurisdiction.
-            </p>
-            <p>
-                Parents and guardians can manage device settings to restrict ad personalization and disable in-app purchases.
-            </p>
-        </section>
+            <section class="section-card">
+                <h2>8. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time to reflect changes to the game, legal requirements, or third-party service relationships. Updates will be posted on this page with a revised "Last Updated" date.</p>
+            </section>
 
-        <section>
-            <h2>6. Data Security</h2>
-            <p>We take reasonable steps to protect your information:</p>
-            <ul>
-                <li>Gameplay data is stored locally on your device</li>
-                <li>Payment processing is handled by trusted platform providers</li>
-                <li>We do not maintain user accounts or store personal profiles for this game</li>
-            </ul>
-            <p>
-                While we take reasonable measures, no method of electronic storage or transmission is completely secure.
-            </p>
-        </section>
+            <section class="contact-card">
+                <h2>9. Contact Us</h2>
+                <p>If you have questions about this Privacy Policy, contact <a href="mailto:phancuong0209@gmail.com">phancuong0209@gmail.com</a>.</p>
+            </section>
+        </div>
+    </main>
 
-        <section>
-            <h2>7. Your Choices</h2>
-            <ul>
-                <li>You can stop using the app at any time</li>
-                <li>You can disable in-app purchases in your device settings</li>
-                <li>You can control ad personalization through your device privacy settings</li>
-                <li>You can delete the app to remove locally stored gameplay data from your device</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>8. Changes to This Privacy Policy</h2>
-            <p>
-                We may update this Privacy Policy from time to time to reflect changes in the game, legal requirements, or third-party services. Any updates will be posted on this page with a revised "Last Updated" date.
-            </p>
-        </section>
-
-        <section>
-            <h2>9. Contact Us</h2>
-            <div class="contact-info">
-                <p>
-                    If you have any questions about this Privacy Policy, please contact us at:
-                    <a href="mailto:phancuong0209@gmail.com">phancuong0209@gmail.com</a>
-                </p>
-            </div>
-        </section>
-
-        <footer>
+    <footer>
+        <div class="container footer-inner">
             <p>&copy; 2026 Candy Lollipop Saga. All rights reserved.</p>
-        </footer>
-    </div>
+            <div class="footer-links">
+                <a href="./index.html">Home</a>
+                <a href="./support.html">Support</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

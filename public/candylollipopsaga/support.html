@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Support and help center for Lollipop Saga. Get match-3 gameplay help, troubleshooting steps, purchase information, privacy information, and contact details.">
-    <title>Support - Lollipop Saga</title>
+    <meta name="description" content="Candy Lollipop Saga support page with gameplay tips, troubleshooting help, purchase guidance, and contact information.">
+    <title>Support - Candy Lollipop Saga</title>
     <style>
         :root {
-            --pink: #ec4899;
-            --pink-dark: #be185d;
-            --orange: #fb923c;
-            --cream: #fff7ed;
-            --ink: #2b1326;
-            --muted: #735368;
-            --panel: #ffffff;
-            --line: rgba(190, 24, 93, 0.18);
-            --shadow: 0 18px 50px rgba(190, 24, 93, 0.14);
+            --accent: #ff385c;
+            --accent-soft: #fff1f3;
+            --ink: #222222;
+            --ink-soft: #3a3a3a;
+            --text-secondary: #717171;
+            --border: #dddddd;
+            --divider: #ebebeb;
+            --surface: #ffffff;
+            --surface-soft: #f7f3ee;
+            --shadow-soft: 0 20px 50px rgba(34, 34, 34, 0.08);
+            --shadow-card: 0 12px 28px rgba(34, 34, 34, 0.06);
         }
 
         * {
@@ -26,247 +28,410 @@
 
         body {
             min-height: 100vh;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--ink);
             background:
-                linear-gradient(135deg, rgba(236, 72, 153, 0.14), rgba(251, 146, 60, 0.12)),
-                var(--cream);
+                radial-gradient(circle at top left, rgba(255, 56, 92, 0.12), transparent 28%),
+                linear-gradient(180deg, #fffdfb 0%, #fff7ef 45%, #ffffff 100%);
             line-height: 1.6;
         }
 
         a {
-            color: var(--pink-dark);
-            font-weight: 800;
+            color: inherit;
             text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
+        img {
+            display: block;
+            max-width: 100%;
         }
 
         .container {
-            width: min(920px, calc(100% - 36px));
+            width: min(1020px, calc(100% - 32px));
             margin: 0 auto;
-            padding: 42px 0;
         }
 
         .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 34px;
-            color: var(--muted);
-            font-weight: 800;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+            background: rgba(255, 253, 251, 0.82);
+            backdrop-filter: blur(16px);
         }
 
-        .topbar nav {
+        .topbar-inner {
+            min-height: 76px;
             display: flex;
-            gap: 14px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .brand img {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            box-shadow: 0 10px 24px rgba(255, 56, 92, 0.16);
+        }
+
+        .brand small {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
-        .hero,
-        .card {
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            box-shadow: var(--shadow);
+        nav a {
+            padding: 10px 14px;
+            color: var(--text-secondary);
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--ink);
+            background: rgba(255, 56, 92, 0.08);
+            outline: none;
+        }
+
+        main {
+            padding: 38px 0 48px;
         }
 
         .hero {
-            padding: 34px;
-            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+            gap: 18px;
+            margin-bottom: 18px;
         }
 
-        .app-mark {
-            width: 58px;
-            height: 58px;
-            border-radius: 16px;
-            display: grid;
-            place-items: center;
-            color: #fff;
-            font-size: 1.7rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--pink), var(--orange));
-            margin-bottom: 18px;
+        .hero-card,
+        .panel,
+        .contact-card {
+            padding: 24px;
+            border: 1px solid var(--divider);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: var(--shadow-card);
+        }
+
+        .hero-card {
+            box-shadow: var(--shadow-soft);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 8px 14px;
+            margin-bottom: 16px;
+            color: var(--accent);
+            background: var(--accent-soft);
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 700;
         }
 
         h1 {
-            font-size: clamp(2rem, 5vw, 3.3rem);
-            line-height: 1.05;
-            letter-spacing: 0;
             margin-bottom: 12px;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            line-height: 0.98;
         }
 
-        .hero p,
-        p,
-        li {
-            color: var(--muted);
+        .hero-card p,
+        .panel p,
+        .panel li,
+        .contact-card p {
+            color: var(--text-secondary);
         }
 
-        .hero p {
-            max-width: 760px;
-            font-size: 1.08rem;
+        .hero-actions,
+        .store-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .card {
-            padding: 28px;
-            margin-bottom: 18px;
-            box-shadow: 0 12px 34px rgba(190, 24, 93, 0.08);
+        .hero-actions {
+            margin-top: 22px;
         }
 
-        h2 {
-            color: var(--pink-dark);
-            font-size: 1.65rem;
-            margin-bottom: 16px;
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-weight: 700;
+            transition: transform 0.18s ease;
         }
 
-        h3 {
-            font-size: 1.08rem;
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .button-primary {
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--accent), #ff7b4d);
+            box-shadow: 0 16px 30px rgba(255, 56, 92, 0.2);
+        }
+
+        .button-secondary {
+            border: 1px solid var(--border);
+            background: #ffffff;
+        }
+
+        .hero-side {
+            display: grid;
+            gap: 16px;
+        }
+
+        .side-stat {
+            padding: 18px;
+            border-radius: 20px;
+            background: linear-gradient(180deg, #fff8f1, #ffffff);
+            border: 1px solid rgba(255, 185, 56, 0.22);
+        }
+
+        .side-stat strong {
+            display: block;
             margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .side-stat span {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .panel h2,
+        .contact-card h2 {
+            margin-bottom: 14px;
+            font-size: 1.5rem;
+            line-height: 1.1;
         }
 
         ul {
-            margin-left: 22px;
-            margin-bottom: 4px;
+            margin-left: 18px;
         }
 
-        li {
-            margin-bottom: 8px;
+        li + li {
+            margin-top: 8px;
         }
 
-        .faq {
+        .faq-list {
             display: grid;
             gap: 12px;
         }
 
         .faq-item {
-            border-left: 4px solid var(--pink);
-            background: #fff1f2;
-            border-radius: 8px;
             padding: 18px;
+            border-radius: 18px;
+            background: #fff8fa;
+            border: 1px solid rgba(255, 56, 92, 0.12);
         }
 
-        .contact {
-            display: grid;
-            gap: 10px;
-            padding: 22px;
-            border-radius: 8px;
-            color: #fff;
-            background: linear-gradient(135deg, var(--pink), var(--orange));
+        .faq-item h3 {
+            margin-bottom: 6px;
+            font-size: 1.04rem;
         }
 
-        .contact p,
-        .contact a {
-            color: #fff;
+        .contact-card {
+            margin-top: 18px;
+            background: linear-gradient(135deg, #ff496b, #ff8a52);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 22px 40px rgba(255, 56, 92, 0.18);
         }
 
-        .footer {
-            text-align: center;
-            color: var(--muted);
+        .contact-card p,
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .contact-card a {
+            font-weight: 700;
+        }
+
+        footer {
+            padding: 28px 0 40px;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
             padding-top: 18px;
+            border-top: 1px solid var(--divider);
+            color: var(--text-secondary);
         }
 
-        @media (max-width: 640px) {
-            .topbar {
-                align-items: flex-start;
-                flex-direction: column;
-            }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
 
+        @media (max-width: 860px) {
             .hero,
-            .card {
-                padding: 22px;
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .topbar-inner,
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="topbar">
-            <a href="./index.html">Lollipop Saga</a>
-            <nav>
-                <a href="./index.html">Marketing</a>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="./index.html" aria-label="Candy Lollipop Saga home">
+                <img src="./images/icon.png" alt="Candy Lollipop Saga app icon">
+                <span>
+                    Candy Lollipop Saga
+                    <small>Support center</small>
+                </span>
+            </a>
+            <nav aria-label="Support navigation">
+                <a href="./index.html">Home</a>
                 <a href="./privacy-policy.html">Privacy</a>
             </nav>
         </div>
+    </header>
 
-        <header class="hero">
-            <div class="app-mark" aria-hidden="true">L</div>
-            <h1>Support for Lollipop Saga</h1>
-            <p>Find gameplay help, troubleshooting steps, purchase information, privacy details, and contact information for Lollipop Saga.</p>
-        </header>
+    <main class="container">
+        <section class="hero">
+            <article class="hero-card">
+                <p class="eyebrow">Help for players on iOS and Android</p>
+                <h1>Support for Candy Lollipop Saga</h1>
+                <p>Use this page for gameplay basics, common troubleshooting steps, purchase guidance, and direct contact details if something is not working as expected.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="mailto:phancuong0209@gmail.com">Email Support</a>
+                    <a class="button button-secondary" href="./privacy-policy.html">Privacy Policy</a>
+                </div>
+            </article>
 
-        <section class="card">
-            <h2>How to Play</h2>
-            <ul>
-                <li><strong>Match candies:</strong> Swap candies to match three or more of the same type.</li>
-                <li><strong>Create boosters:</strong> Match four or more candies to create stronger effects and combos.</li>
-                <li><strong>Beat level goals:</strong> Complete the objective before running out of moves.</li>
-                <li><strong>Use boosters wisely:</strong> Save boosters for difficult boards and tight move counts.</li>
-                <li><strong>Keep progressing:</strong> Clear levels to unlock more sweet match-3 challenges.</li>
-            </ul>
+            <aside class="hero-side">
+                <div class="side-stat">
+                    <strong>Download links</strong>
+                    <div class="store-links">
+                        <a href="https://apps.apple.com/us/app/candy-lollipop-saga/id1037961809" target="_blank" rel="noopener">App Store</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.gbv.candylollipopsaga" target="_blank" rel="noopener">Google Play</a>
+                    </div>
+                </div>
+                <div class="side-stat">
+                    <strong>Before contacting support</strong>
+                    <span>Include device model, OS version, app version, and the level or screen where the issue happens.</span>
+                </div>
+            </aside>
         </section>
 
-        <section class="card">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq">
-                <div class="faq-item">
+        <section class="grid">
+            <article class="panel">
+                <h2>How to play</h2>
+                <ul>
+                    <li>Swap candies to match three or more of the same type.</li>
+                    <li>Create bigger matches to trigger boosters and stronger combos.</li>
+                    <li>Complete the level objective before you run out of moves.</li>
+                    <li>Save powerful boosters for tighter or more difficult boards.</li>
+                    <li>Keep progressing to unlock more candy puzzle challenges.</li>
+                </ul>
+            </article>
+
+            <article class="panel">
+                <h2>Troubleshooting</h2>
+                <ul>
+                    <li>Close and reopen the app if gameplay stalls or freezes.</li>
+                    <li>Restart your device if the app becomes unresponsive.</li>
+                    <li>Check available device storage and update to the latest app version.</li>
+                    <li>Use a stable internet connection for ads, purchases, or rewarded features.</li>
+                    <li>Revisit the store listing to confirm you installed the newest release.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="panel" style="margin-top: 18px;">
+            <h2>Frequently asked questions</h2>
+            <div class="faq-list">
+                <article class="faq-item">
                     <h3>Can I play offline?</h3>
-                    <p>Yes. The core game can be played offline. Ads, purchases, rewarded features, or store-related features may require an internet connection.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is Lollipop Saga free?</h3>
-                    <p>Yes. Lollipop Saga is free to download and enjoy.</p>
-                </div>
-                <div class="faq-item">
+                    <p>Yes. The core game can be played offline. Ads, purchases, rewarded content, or other store-connected features may require internet access.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>Is the game free?</h3>
+                    <p>Yes. Candy Lollipop Saga is free to download and play.</p>
+                </article>
+                <article class="faq-item">
                     <h3>Does the game include in-app purchases?</h3>
-                    <p>Yes. Some optional in-game items, such as extra moves or lives, may be available through in-app purchases. You can disable in-app purchases in your device settings.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What happens if I uninstall the game?</h3>
-                    <p>Locally stored progress, settings, boosters, lives, and rewards may be deleted when the app is uninstalled.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is my personal data collected?</h3>
-                    <p>We do not collect personal information directly. The game stores gameplay data locally, and ads or purchases may be handled by third-party platform services. Read the <a href="./privacy-policy.html">Privacy Policy</a> for details.</p>
-                </div>
+                    <p>Yes. Optional items such as extra moves or lives may be available through the App Store or Google Play.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>What happens if I uninstall the app?</h3>
+                    <p>Locally stored progress, settings, boosters, lives, and rewards may be removed when the game is uninstalled from your device.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>Do you directly collect personal information?</h3>
+                    <p>No personal information is collected directly by us for normal gameplay. Review the <a href="./privacy-policy.html">Privacy Policy</a> for details about local storage, ads, and platform purchases.</p>
+                </article>
             </div>
         </section>
 
-        <section class="card">
-            <h2>Troubleshooting</h2>
+        <section class="panel" style="margin-top: 18px;">
+            <h2>Purchases and billing</h2>
             <ul>
-                <li>Force close the app and reopen it.</li>
-                <li>Restart your device if the game becomes unresponsive.</li>
-                <li>Make sure your device has enough free storage.</li>
-                <li>Update to the latest version available on the App Store or Google Play.</li>
-                <li>Check your internet connection if ads, purchases, or rewarded features are not loading.</li>
+                <li>All in-app purchases are processed by Apple App Store or Google Play Store billing systems.</li>
+                <li>We do not receive or store your full payment card information.</li>
+                <li>Refund requests and billing issues should be handled through your app store account support flow.</li>
+                <li>You can disable in-app purchases from device settings or parental controls.</li>
             </ul>
         </section>
 
-        <section class="card">
-            <h2>Purchases and Billing</h2>
-            <ul>
-                <li>In-app purchases are processed by the Apple App Store or Google Play Store.</li>
-                <li>We do not receive or store your full payment card details.</li>
-                <li>For refunds or billing problems, please use the purchase support flow from your app store account.</li>
-                <li>You can disable in-app purchases in your device settings or parental control settings.</li>
-            </ul>
+        <section class="contact-card">
+            <h2>Contact support</h2>
+            <p>For bug reports, account or purchase questions, or general feedback, email <a href="mailto:phancuong0209@gmail.com">phancuong0209@gmail.com</a>.</p>
+            <p>Please include your device model, operating system version, app version, and a short description of the issue so troubleshooting is faster.</p>
         </section>
+    </main>
 
-        <section class="card">
-            <h2>Contact Us</h2>
-            <div class="contact">
-                <p>For bug reports, support questions, or feedback, email us at:</p>
-                <p><a href="mailto:vidvocab@gmail.com">vidvocab@gmail.com</a></p>
-                <p>Please include your device model, operating system version, app version, level number, and a short description of the issue.</p>
+    <footer>
+        <div class="container footer-inner">
+            <p>&copy; 2026 Candy Lollipop Saga. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="./index.html">Home</a>
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-        </section>
-
-        <footer class="footer">
-            <p>&copy; 2026 Lollipop Saga. All rights reserved.</p>
-        </footer>
-    </div>
+        </div>
+    </footer>
 </body>
 </html>
