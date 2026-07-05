@@ -163,6 +163,10 @@
             font-size: 1.08rem;
         }
 
+        .hero-copy strong {
+            color: var(--ink);
+        }
+
         .hero-meta {
             display: flex;
             flex-wrap: wrap;
@@ -184,6 +188,12 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+        }
+
+        .hero-left {
+            display: grid;
+            gap: 18px;
+            align-content: start;
         }
 
         .button {
@@ -345,6 +355,43 @@
             object-position: top center;
             border: 1px solid rgba(255, 255, 255, 0.96);
             box-shadow: 0 18px 36px rgba(34, 34, 34, 0.1);
+        }
+
+        .hero-feature-grid,
+        .hero-proof {
+            display: grid;
+            gap: 14px;
+        }
+
+        .hero-feature-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .hero-proof {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .hero-feature-card,
+        .hero-proof-card {
+            padding: 18px;
+            border: 1px solid var(--divider);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: var(--shadow-card);
+        }
+
+        .hero-feature-card strong,
+        .hero-proof-card strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-feature-card span,
+        .hero-proof-card span {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
         }
 
         .booster-row,
@@ -518,6 +565,11 @@
             .info-grid {
                 grid-template-columns: 1fr;
             }
+
+            .hero-feature-grid,
+            .hero-proof {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 720px) {
@@ -565,11 +617,11 @@
 
     <main>
         <section class="container hero">
-            <div>
+            <div class="hero-left">
                 <p class="eyebrow">Colorful puzzles. Satisfying combos. Play anywhere.</p>
                 <h1>Candy Lollipop Saga</h1>
                 <p class="hero-copy">
-                    Dive into a bright match-3 world packed with candy chains, clever level goals, powerful boosters, and that just-one-more-level feeling. Designed for quick breaks or longer puzzle sessions on iPhone and Android.
+                    Dive into a bright match-3 world packed with candy chains, clever level goals, powerful boosters, and that just-one-more-level feeling. <strong>Easy to start, satisfying to master</strong>, and designed for quick breaks or longer puzzle sessions on iPhone and Android.
                 </p>
                 <div class="hero-meta" aria-label="Game highlights">
                     <span class="meta-pill">Hundreds of sweet puzzle levels</span>
@@ -585,6 +637,40 @@
                         <span aria-hidden="true">Android</span>
                         <span><small>Get it on</small><strong>Google Play</strong></span>
                     </a>
+                </div>
+
+                <div class="hero-feature-grid" aria-label="Hero feature highlights">
+                    <article class="hero-feature-card">
+                        <strong>Quick to learn</strong>
+                        <span>Simple match-3 moves make the first session frictionless on any phone.</span>
+                    </article>
+                    <article class="hero-feature-card">
+                        <strong>Rewarding combos</strong>
+                        <span>Chain reactions and boosters create the high-impact moments players want to repeat.</span>
+                    </article>
+                    <article class="hero-feature-card">
+                        <strong>Offline core gameplay</strong>
+                        <span>Keep clearing levels even when you are away from a stable connection.</span>
+                    </article>
+                    <article class="hero-feature-card">
+                        <strong>Built for short breaks</strong>
+                        <span>Fast sessions make it easy to jump in, progress, and return later.</span>
+                    </article>
+                </div>
+
+                <div class="hero-proof" aria-label="Game trust points">
+                    <div class="hero-proof-card">
+                        <strong>Level variety</strong>
+                        <span>Goals and board setups keep the challenge moving.</span>
+                    </div>
+                    <div class="hero-proof-card">
+                        <strong>Bright candy art</strong>
+                        <span>Readable visuals and cheerful effects throughout.</span>
+                    </div>
+                    <div class="hero-proof-card">
+                        <strong>Free download</strong>
+                        <span>Available now on both major mobile stores.</span>
+                    </div>
                 </div>
             </div>
 
