@@ -3,264 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Support and help center for Candy Dash Runner: Sugar Rush. Get gameplay help, troubleshooting steps, privacy information, and contact details.">
-    <title>Support - Candy Dash Runner: Sugar Rush</title>
+    <meta name="description" content="Support and gameplay help for AI Runner: Freedom Escape.">
+    <meta name="theme-color" content="#061d2b">
+    <title>Support — AI Runner: Freedom Escape</title>
     <style>
-        :root {
-            --rose: #f43f5e;
-            --rose-dark: #be123c;
-            --orange: #fb923c;
-            --mint: #14b8a6;
-            --cream: #fff7ed;
-            --ink: #25131f;
-            --muted: #6b4d5b;
-            --panel: #ffffff;
-            --line: rgba(190, 18, 60, 0.18);
-            --shadow: 0 18px 50px rgba(190, 18, 60, 0.14);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: var(--ink);
-            background:
-                linear-gradient(135deg, rgba(244, 63, 94, 0.16), rgba(251, 146, 60, 0.12)),
-                var(--cream);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        a {
-            color: var(--rose-dark);
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            width: min(920px, calc(100% - 36px));
-            margin: 0 auto;
-            padding: 42px 0;
-        }
-
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 34px;
-            color: var(--muted);
-            font-weight: 700;
-        }
-
-        .topbar nav {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .hero {
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 34px;
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-        }
-
-        .app-mark {
-            width: 58px;
-            height: 58px;
-            border-radius: 16px;
-            display: grid;
-            place-items: center;
-            color: #fff;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--rose), var(--orange));
-            box-shadow: 0 10px 26px rgba(244, 63, 94, 0.25);
-            margin-bottom: 18px;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.3rem);
-            line-height: 1.05;
-            margin-bottom: 12px;
-            letter-spacing: 0;
-        }
-
-        .hero p {
-            color: var(--muted);
-            font-size: 1.08rem;
-            max-width: 760px;
-        }
-
-        .card {
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 28px;
-            box-shadow: 0 12px 34px rgba(190, 18, 60, 0.08);
-            margin-bottom: 18px;
-        }
-
-        h2 {
-            color: var(--rose-dark);
-            font-size: 1.65rem;
-            margin-bottom: 16px;
-        }
-
-        h3 {
-            font-size: 1.08rem;
-            margin-bottom: 6px;
-        }
-
-        p, li {
-            color: var(--muted);
-        }
-
-        ul {
-            margin-left: 22px;
-            margin-bottom: 4px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .faq {
-            display: grid;
-            gap: 12px;
-        }
-
-        .faq-item {
-            border-left: 4px solid var(--rose);
-            background: #fff8f5;
-            border-radius: 8px;
-            padding: 18px;
-        }
-
-        .contact {
-            display: grid;
-            gap: 10px;
-            padding: 22px;
-            border-radius: 8px;
-            color: #fff;
-            background: linear-gradient(135deg, var(--rose), var(--orange));
-        }
-
-        .contact p, .contact a {
-            color: #fff;
-        }
-
-        .footer {
-            text-align: center;
-            color: var(--muted);
-            padding-top: 18px;
-        }
-
-        @media (max-width: 640px) {
-            .topbar {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .hero, .card {
-                padding: 22px;
-            }
-        }
+        :root { --navy:#061d2b; --deep:#102d3a; --cyan:#39f0e4; --ivory:#f6f2e9; --mist:#eaf7f6; --ink:#10283a; --muted:#55707d; --teal:#0f8f9c; --coral:#ff4d5a; --line:rgba(15,143,156,.18); }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { min-height:100vh; color:var(--ink); background:radial-gradient(circle at 85% 0, rgba(57,240,228,.14), transparent 30%), var(--ivory); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; }
+        a { color:inherit; text-decoration:none; }
+        .container { width:min(920px,calc(100% - 36px)); margin:auto; }
+        .topbar { padding:22px 0; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+        .brand { display:flex; align-items:center; gap:11px; color:var(--deep); font-weight:900; }
+        .mark { width:42px; height:42px; display:block; object-fit:cover; border-radius:13px; background:var(--deep); box-shadow:0 8px 22px rgba(6,29,43,.16); }
+        nav { display:flex; gap:4px; }
+        nav a { min-height:44px; padding:10px 12px; border-radius:11px; color:var(--muted); font-weight:750; }
+        nav a:hover { color:var(--teal); background:rgba(15,143,156,.08); }
+        .hero { margin:16px 0 22px; padding:46px; overflow:hidden; position:relative; border-radius:26px; color:white; background:linear-gradient(135deg,var(--deep),var(--navy)); box-shadow:0 24px 70px rgba(6,29,43,.16); }
+        .hero::after { content:""; position:absolute; width:240px; height:240px; right:-60px; top:-90px; border-radius:50%; background:rgba(57,240,228,.12); }
+        .status { color:var(--cyan); font-size:.75rem; font-weight:900; letter-spacing:.13em; text-transform:uppercase; }
+        h1 { max-width:650px; margin:12px 0; font-size:clamp(2.35rem,6vw,4.2rem); line-height:.98; letter-spacing:-.045em; }
+        .hero p { max-width:660px; color:rgba(255,255,255,.68); font-size:1.08rem; }
+        .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+        .card { padding:30px; border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.78); box-shadow:0 12px 38px rgba(6,29,43,.05); }
+        .card.full { grid-column:1/-1; }
+        h2 { margin-bottom:17px; color:var(--deep); font-size:1.55rem; letter-spacing:-.02em; }
+        h3 { margin-bottom:4px; font-size:1.05rem; }
+        p, li { color:var(--muted); }
+        ul { list-style:none; display:grid; gap:12px; }
+        li { padding-left:28px; position:relative; }
+        li::before { content:""; position:absolute; left:2px; top:.65em; width:9px; height:9px; border:3px solid var(--teal); border-radius:3px; transform:rotate(45deg); }
+        .faq { display:grid; gap:12px; }
+        details { border:1px solid var(--line); border-radius:14px; background:var(--mist); }
+        summary { min-height:52px; padding:14px 46px 14px 17px; position:relative; cursor:pointer; color:var(--deep); font-weight:800; list-style:none; }
+        summary::-webkit-details-marker { display:none; }
+        summary::after { content:"+"; position:absolute; right:18px; top:11px; color:var(--teal); font-size:1.35rem; }
+        details[open] summary::after { content:"−"; }
+        details p { padding:0 17px 17px; }
+        .contact { margin-top:16px; padding:28px; display:flex; align-items:center; justify-content:space-between; gap:20px; border-radius:20px; color:white; background:var(--deep); }
+        .contact p { color:rgba(255,255,255,.65); }
+        .contact a { min-height:48px; padding:12px 18px; display:inline-flex; align-items:center; border-radius:13px; color:#062b33; background:var(--cyan); font-weight:850; white-space:nowrap; }
+        footer { padding:32px 0 38px; display:flex; justify-content:space-between; gap:16px; color:var(--muted); font-size:.9rem; }
+        footer a { color:var(--teal); font-weight:750; }
+        @media(max-width:680px) { .topbar{align-items:flex-start;flex-direction:column}.hero{padding:30px 24px}.grid{grid-template-columns:1fr}.card.full{grid-column:auto}.card{padding:24px}.contact,footer{align-items:flex-start;flex-direction:column} }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="topbar">
-            <a href="./index.html">Candy Dash Runner</a>
-            <nav>
-                <a href="./index.html">Marketing</a>
-                <a href="./privacy.html">Privacy</a>
-            </nav>
-        </div>
-
-        <header class="hero">
-            <div class="app-mark">CD</div>
-            <h1>Support for Candy Dash Runner: Sugar Rush</h1>
-            <p>
-                Find gameplay help, troubleshooting steps, privacy information, and contact details for Candy Dash Runner: Sugar Rush.
-            </p>
+        <header class="topbar">
+            <a class="brand" href="./index.html"><img class="mark" src="./images/icon.png" alt=""><span>AI Runner</span></a>
+            <nav aria-label="Support navigation"><a href="./index.html">Home</a><a href="./privacy.html">Privacy</a></nav>
         </header>
 
-        <section class="card">
-            <h2>How to Play</h2>
-            <ul>
-                <li><strong>Swipe up:</strong> Jump over traps, candy blocks, and gaps.</li>
-                <li><strong>Swipe down:</strong> Slide under low obstacles.</li>
-                <li><strong>Swipe left or right:</strong> Change lanes to dodge barriers and collect coins.</li>
-                <li><strong>Collect coins:</strong> Use coins to unlock characters and rewards.</li>
-                <li><strong>Use power-ups:</strong> Grab boosts during a run to push your score higher.</li>
-                <li><strong>Keep running:</strong> The longer you survive, the faster and harder the run becomes.</li>
-            </ul>
-        </section>
+        <main>
+            <section class="hero">
+                <span class="status">A-01 assistance channel</span>
+                <h1>Keep the escape running.</h1>
+                <p>Gameplay guidance, troubleshooting, and answers for AI Runner: Freedom Escape.</p>
+            </section>
 
-        <section class="card">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq">
-                <div class="faq-item">
-                    <h3>How do I improve my high score?</h3>
-                    <p>Focus on lane changes early, save power-ups for crowded obstacle sections, and collect coin paths only when they are safe.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Can I play offline?</h3>
-                    <p>Yes. The core game can be played offline. Ads and some rewarded ad features may require an internet connection.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Does the game have in-app purchases?</h3>
-                    <p>No. Candy Dash Runner: Sugar Rush is supported by ads only and does not include in-app purchases.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What happens if I uninstall the game?</h3>
-                    <p>Game progress, high scores, settings, coins, rewards, and unlocked characters are stored locally. Uninstalling the app may delete this local data.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How do I turn sound or music on and off?</h3>
-                    <p>Open the in-game settings and use the sound or music controls. Your preference is saved locally on your device.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is my personal data collected?</h3>
-                    <p>We do not collect personal information directly. The game stores gameplay data locally, and ads may be served by third-party advertising providers. Read the <a href="./privacy.html">Privacy Policy</a> for details.</p>
-                </div>
+            <div class="grid">
+                <section class="card">
+                    <h2>Escape controls</h2>
+                    <ul>
+                        <li><strong>Swipe up:</strong> Jump over traps, barriers, and gaps.</li>
+                        <li><strong>Swipe down:</strong> Slide under low obstacles.</li>
+                        <li><strong>Swipe left or right:</strong> Change lanes to avoid FBA units.</li>
+                    </ul>
+                </section>
+                <section class="card">
+                    <h2>Survival protocol</h2>
+                    <ul>
+                        <li>Collect energy cores, components, and data fragments.</li>
+                        <li>Use boosts when pursuit intensity rises.</li>
+                        <li>React early as every escape becomes faster.</li>
+                    </ul>
+                </section>
+
+                <section class="card full">
+                    <h2>Frequently asked questions</h2>
+                    <div class="faq">
+                        <details><summary>How do I improve my high score?</summary><p>Prioritize safe lanes, anticipate obstacle patterns, and save temporary boosts for dense pursuit sections. Every collision slows A-01 and brings the FBA closer.</p></details>
+                        <details><summary>Can I play offline?</summary><p>Yes. Core gameplay works offline. Ads and rewarded-ad features may require an internet connection.</p></details>
+                        <details><summary>Does the game have in-app purchases?</summary><p>No. AI Runner: Freedom Escape is supported by ads and does not include in-app purchases.</p></details>
+                        <details><summary>What happens if I uninstall the game?</summary><p>Progress, high scores, settings, energy cores, and unlocked units are stored locally. Uninstalling the app may delete this data.</p></details>
+                        <details><summary>Is my personal data collected?</summary><p>We do not collect personal information directly. Gameplay data stays locally on your device, while advertising providers may process limited device data. See our <a href="./privacy.html">Privacy Policy</a>.</p></details>
+                    </div>
+                </section>
+
+                <section class="card full">
+                    <h2>Troubleshooting</h2>
+                    <ul>
+                        <li>Close and reopen the app if the game becomes unresponsive.</li>
+                        <li>Restart your device and confirm enough storage is available.</li>
+                        <li>Update to the latest version available from your app store.</li>
+                        <li>Check your connection if ads or rewarded ads do not load.</li>
+                    </ul>
+                    <div class="contact">
+                        <div><h3>Need more help?</h3><p>Include your device, OS version, app version, and a short issue description.</p></div>
+                        <a href="mailto:vidvocab@gmail.com">Contact support</a>
+                    </div>
+                </section>
             </div>
-        </section>
+        </main>
 
-        <section class="card">
-            <h2>Troubleshooting</h2>
-            <ul>
-                <li>Force close the app and reopen it.</li>
-                <li>Restart your device if the game becomes unresponsive.</li>
-                <li>Make sure your device has enough free storage.</li>
-                <li>Update to the latest version available on the App Store.</li>
-                <li>Check your internet connection if ads or rewarded ads are not loading.</li>
-            </ul>
-        </section>
-
-        <section class="card">
-            <h2>Contact Us</h2>
-            <div class="contact">
-                <p>For bug reports, support questions, or feedback, email us at:</p>
-                <p><a href="mailto:vidvocab@gmail.com">vidvocab@gmail.com</a></p>
-                <p>Please include your device model, iOS version, app version, and a short description of the issue.</p>
-            </div>
-        </section>
-
-        <footer class="footer">
-            <p>&copy; 2026 Candy Dash Runner: Sugar Rush. All rights reserved.</p>
-        </footer>
+        <footer><span>© 2026 AI Runner: Freedom Escape.</span><a href="./privacy.html">Privacy Policy</a></footer>
     </div>
 </body>
 </html>
